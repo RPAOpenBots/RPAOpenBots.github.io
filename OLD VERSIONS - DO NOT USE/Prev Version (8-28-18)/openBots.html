@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"> 
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+    <script src="openBotsSchedule.js"></script>
+    <link rel="icon" href="favicon.png">
+</head>
+<html>
+<body>
+
+<![if !IE]>
+
+<!-- The Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="schedule"></p>
+    <div id="bot_picture" style="width:100%"></div>
+  </div>
+</div>
+
+<ul>
+    <li>
+        <a href="http://dms.cbrands.com/confluence/display/RPA/Blue+Prism+-+Scheduling" target="_blank" class="header_link">Todays Bot Schedule: 
+        <p class="header_todays_date" id="todaysDate"></p></a>
+    </li>
+    
+    <li style="float:right"> <a class="active"> <input type="date" id="dateInput" class="header_date_selector">
+        <input type="submit" value="Change Date" onclick="init(document.getElementById('dateInput').value)" class="header_change_date"></a>
+    </li>
+  </ul>
+
+<!--Header-->
+
+<!--OUTDATED VERSION TAG-->
+<center>
+<a style="color:red;" href="file://///CBICDG-MARS/Enterprise%20Share/Global%20Business%20Services/Robotic%20Process%20Automation%20Documents/User%20Folders/BBOBO/Open%20Bots/openBots.html">This is an outdated version of openBots</a>
+<br><br></center>
+
+
+<!--***********************************START BOTS PRINTED SCHEDULES************************************-->
+<center>
+    <h5 style="margin-top:10px"> (All times below are EST) </h5>
+<div><h2 class="bots_server_title">GDC Bots</h2></div>
+<!--CBIGDC_PBOTZ901-->
+<div id="GDC_PBOTZ901" class="hover bot_container">
+    <p id="CBIGDC_PBOTZ901_title" class="bot_title" style="background-color:#f2f774"></p>
+    <p id="CBIGDC_PBOTZ901_body"  class="bot_body"></p>
+    <p id="CBIGDC_PBOTZ901_available" class="bot_available"></p>
+</div>
+<!--CBIGDC_PBOTZ902-->
+<div id="GDC_PBOTZ902" class="hover bot_container">
+    <p id="CBIGDC_PBOTZ902_title" class="bot_title" style="background-color:#fc8a8a"></p>
+    <p id="CBIGDC_PBOTZ902_body" class="bot_body"></p>
+    <p id="CBIGDC_PBOTZ902_available" class="bot_available"></p>
+</div>
+<!--CBIGDC_PBOTZ903-->
+<div id="GDC_PBOTZ903" class="hover bot_container">
+    <p id="CBIGDC_PBOTZ903_title" class="bot_title" style="background-color:#79b8e5"></p>
+    <p id="CBIGDC_PBOTZ903_body" class="bot_body"></p>
+    <p id="CBIGDC_PBOTZ903_available" class="bot_available"></p>
+</div>
+<!--CBIGDC_PBOTZ904-->
+<div id="GDC_PBOTZ904" class="hover bot_container">
+    <p id="CBIGDC_PBOTZ904_title" class="bot_title" style="background-color:#f4bf7a"></p>
+    <p id="CBIGDC_PBOTZ904_body" class="bot_body"></p>
+    <p id="CBIGDC_PBOTZ904_available" class="bot_available"></p>
+</div><br>
+<div><h2 class="bots_server_title">TDC Bots</h2></div>
+<!--CBITDC_PBOTZ901-->
+<div id="TDC_PBOTZ901" class="hover bot_container">
+    <p id="CBITDC_PBOTZ901_title" class="bot_title" style="background-color:#a2dd77"></p>
+    <p id="CBITDC_PBOTZ901_body" class="bot_body"></p>
+    <p id="CBITDC_PBOTZ901_available" class="bot_available"></p>
+</div>
+<!--CBITDC_PBOTZ902-->
+<div id="TDC_PBOTZ902" class="hover bot_container">
+    <p id="CBITDC_PBOTZ902_title" class="bot_title" style="background-color:#d2d7db"></p>
+    <p id="CBITDC_PBOTZ902_body" class="bot_body"></p>
+    <p id="CBITDC_PBOTZ902_available" class="bot_available"></p>
+</div>
+<!--CBITDC_PBOTZ903-->
+<div id="TDC_PBOTZ903" class="hover bot_container">
+    <p id="CBITDC_PBOTZ903_title" class="bot_title" style="background-color:#edf0f2"></p>
+    <p id="CBITDC_PBOTZ903_body" class="bot_body"></p>
+    <p id="CBITDC_PBOTZ903_available" class="bot_available"></p>
+</div>
+<!--CBITDC_PBOTZ904-->
+<div id="TDC_PBOTZ904" class="hover bot_container">
+    <p id="CBITDC_PBOTZ904_title" class="bot_title" style="background-color:#d4fcfb"></p>
+    <p id="CBITDC_PBOTZ904_body" class="bot_body"></p>
+    <p id="CBITDC_PBOTZ904_available" class="bot_available"></p>
+</div>
+</center>
+<!--***********************************END BOTS PRINTED SCHEDULES************************************-->
+<![endif]>
+
+<div class="footer_container"></div>
+<footer class="footer">
+    <div class="footer_box">
+        <div class="footer_id" id="today"></div>
+        <div class="footer_day" id="day"></div>
+        <div class="footer_hour" id="hour"></div>
+        <div class="footer_business_day" id="businessDay"></div>
+        <div class="footer_month_end" id="monthEnd"></div> 
+    </div>
+   <a class="found_bug" href="mailto:ben.bobo@cbrands.com?subject=Open Bots Bug&body=Description of Bug/Error: %0D%0A ">Found a Bug?</a>
+</footer>
+<footer class="footer_spacing"></footer>
+
+ 
+<script>
+    var self = this;
+    init();
+
+    function init(datePassedIn){
+        self.botSched();
+        //reset printed schedules 
+        document.getElementById("CBIGDC_PBOTZ901_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ902_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ903_body").innerHTML = ""
+		document.getElementById("CBIGDC_PBOTZ904_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ901_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ902_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ903_body").innerHTML = ""
+		document.getElementById("CBITDC_PBOTZ904_body").innerHTML = ""
+
+        //date passed in?
+        if(datePassedIn!=undefined && datePassedIn!=""){
+            self.date = new Date(datePassedIn);
+            date.setDate(date.getDate() + 1)
+            self.hideAvailable = true;
+        } else {
+            self.hideAvailable = false;
+            self.date = new Date();
+        }
+
+        //init date variables
+        self.weekday = new Array(7);
+        weekday[0] = "Sunday";weekday[1] = "Monday";weekday[2] = "Tuesday";weekday[3] = "Wednesday";weekday[4] = "Thursday"; weekday[5] = "Friday";weekday[6] = "Saturday";
+        self.today = date.getDate();
+        self.hour = date.getHours();
+        self.day = weekday[date.getDay()];
+        self.lastDayOfMonth = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
+        self.businessDay = "";
+        self.monthEndDay = "";
+        self.TURNINGPOINT = 15;
+        
+        document.getElementById("todaysDate").innerHTML = date;
+
+        // Print bots to screen
+        printToScreen(CBIGDCxPBOTZ901, "CBIGDC_PBOTZ901");
+        printToScreen(CBIGDCxPBOTZ902, "CBIGDC_PBOTZ902");
+        printToScreen(CBIGDCxPBOTZ903, "CBIGDC_PBOTZ903");
+		printToScreen(CBIGDCxPBOTZ904, "CBIGDC_PBOTZ904");
+        printToScreen(CBITDCxPBOTZ901, "CBITDC_PBOTZ901");
+        printToScreen(CBITDCxPBOTZ902, "CBITDC_PBOTZ902");
+        printToScreen(CBITDCxPBOTZ903, "CBITDC_PBOTZ903");
+		printToScreen(CBITDCxPBOTZ904, "CBITDC_PBOTZ904");
+
+        //debug help 
+        console.log("Today: " + today)
+        console.log("Day of the week: " + day)
+        console.log("Hour: " + hour)
+        console.log("Business Day: " + businessDay)
+        console.log("Month End Day: " + monthEndDay)
+        document.getElementById("today").innerHTML = today;
+        document.getElementById("day").innerHTML = day;
+        document.getElementById("hour").innerHTML = moment(hour + ":00:00", 'HH:mm').format('h:mm A');
+        document.getElementById("businessDay").innerHTML = businessDay.replace("N","-").replace("day","Day ");;
+        document.getElementById("monthEnd").innerHTML = (monthEndDay.replace("N","-")).replace("MEday","Month End Day ");
+    }
+
+    /*
+     *  Function()
+     *  Print bots schedules to the screen
+     */
+    function printToScreen(bot, name){
+        var isTodayBusinessDay = isBusinessDay(new Date());
+        convertDayToBusinessDay(today);
+        if(isBusinessDay(date)){ convertDayToMonthEndDay(date); }
+        else{ self.monthEndDay="" }
+        var available = "*Available";
+      
+        //remove days other than today 
+        for (var property in bot) {
+            if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && property != "daily") {
+                delete bot[property];
+            }
+            if(bot.hasOwnProperty(property) && businessDay != property && property != day && property != "daily" && property != monthEndDay){
+                delete bot[property];
+            }
+        }
+        
+        //print remaining days
+        var outputs = [];
+        for (var property in bot) {
+            if (bot.hasOwnProperty(property)){
+                for (value in bot[property]){
+                    if(bot[property][value]===hour){
+                        available = " ";
+                    }
+                    if(!outputs.includes(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'))){
+                        outputs.push(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'));
+                    }
+                    bot[property][value] = moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A');
+                }
+            }
+        }
+
+        //sort times earliest -> latest
+        outputs.sort(function (a, b) {
+            return new Date('1970/01/01 ' + a) - new Date('1970/01/01 ' + b);
+        });
+    
+        //set elements for schedules 
+        document.getElementById(name+"_title").innerHTML = "<center><strong>"+name+":</strong></center> <br>"
+        for (var i=0; i<outputs.length; i++) {
+            document.getElementById(name+"_body").innerHTML = "<center>" + document.getElementById(name+"_body").innerHTML + outputs[i] + "</center><br>";
+        }
+        if(outputs.length === 0){
+            document.getElementById(name+"_body").innerHTML = "<center>" + document.getElementById(name+"_body").innerHTML + "None" + "</center><br>";
+        }
+        
+        document.getElementById(name+"_available").innerHTML = available;
+        if(self.hideAvailable){
+            document.getElementById(name+"_available").innerHTML = " ";
+        }
+       
+    }
+
+    /*
+     *  Function()
+     *  Convert the day of the month to the calendar day. 
+     */
+    function convertDayToBusinessDay(today){
+        if(today>=1 && today<=TURNINGPOINT){
+            businessDay = "day" + today;
+        } else {
+            businessDay = "dayN" + (lastDayOfMonth - today  + 1);
+        }
+    }
+
+    /*
+     *  Function()
+     *  Convert the day of the month to the month end day.
+     */
+    function convertDayToMonthEndDay(date){
+        dayCounter = 1; 
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), dayCounter);
+        var monthEndDays = [];
+        var totalEndDays = [];
+        var monthEndBusinessDays = [];
+        var totalMonthEndBusinessDays = [];
+        var passedToday = false;
+
+        while(String(firstDay) != String(lastDay)){
+            firstDay = new Date(date.getFullYear(), date.getMonth(), dayCounter);
+            if(!passedToday){
+                monthEndDays.push(firstDay);
+            }
+            totalEndDays.push(firstDay);
+            if(dayCounter===today){
+                passedToday = true;
+            }
+            dayCounter++;
+        }    
+
+        for(var i=1; i<monthEndDays.length; i++){
+            if(isBusinessDay(monthEndDays[i])){
+                monthEndBusinessDays.push(monthEndDays[i])
+            }
+        }
+
+        for(var i=1; i<totalEndDays.length; i++){
+            if(isBusinessDay(totalEndDays[i])){
+                totalMonthEndBusinessDays.push(totalEndDays[i])
+            }
+        }
+        
+        monthEndDay = "MEday" + (monthEndBusinessDays.length + 1);
+        if(today > TURNINGPOINT){        
+            monthEndDay = "MEdayN" + (totalMonthEndBusinessDays.length - monthEndBusinessDays.length+1);
+        }
+    }
+
+    /*
+     *  Function()
+     *  Check if passed in day is weekend or holiday 
+     */
+    function isBusinessDay(dayToCheck){
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        const d = dayToCheck;
+        var todayCheck = dayToCheck.getDate();
+        var dayCheck = self.weekday[dayToCheck.getDay()];
+        var monthName = monthNames[d.getMonth()];
+        
+        // check if weekend
+        if(dayCheck === "Saturday" || dayCheck === "Sunday"){
+            return false;
+        }
+        
+        // check if New Year's Day
+        if (monthName === "January" && todayCheck === 1) {
+            return false;
+        }
+        
+        // check if Christmas
+        if (monthName === "December" && todayCheck === 25) {
+            return false;
+        }
+        
+        // check if 4th of July
+        if (monthName === "July" && todayCheck === 4) {
+            return false;
+        }
+        
+        // check Memorial Day (last Monday of May)
+        if (monthName === "May" && dayCheck === "Monday" && todayCheck > (31 - 7) ) {
+            return false;
+        }
+        
+        // check Labor Day (1st Monday of September)
+        if (monthName === "September" && todayCheck <= 7 && dayCheck === "Monday") {
+            return false;
+        }
+
+         // check Thanksgiving (Thursday of November from 22nd-28th)
+         if (monthName === "November"&& (todayCheck >= 22 || todayCheck <= 28) && dayCheck === "Thursday") {
+            return false;
+        }
+        
+        // check Veterans Day (November 11)
+        if (monthName === "November" && todayCheck === 11) {
+          return true;
+        }
+        
+        // If nothing else, return true
+        return true;
+    }
+
+
+    /*
+     * MODAL 
+    */
+    // Get the button that opens the modal
+    var gdc1 = document.getElementById("GDC_PBOTZ901");
+    var gdc2 = document.getElementById("GDC_PBOTZ902");
+    var gdc3 = document.getElementById("GDC_PBOTZ903");
+    var gdc4 = document.getElementById("GDC_PBOTZ904");
+    var tdc1 = document.getElementById("TDC_PBOTZ901");
+    var tdc2 = document.getElementById("TDC_PBOTZ902");
+    var tdc3 = document.getElementById("TDC_PBOTZ903");
+    var tdc4 = document.getElementById("TDC_PBOTZ904");
+    var botClicked = "";
+
+    var modal = document.getElementById('modal');
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    gdc1.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='gdcbot1.png' style='width:100%' border='1'>";}
+    gdc2.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='gdcbot2.png' style='width:100%' border='1'>";}
+    gdc3.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='gdcbot3.png' style='width:100%' border='1'>";}
+    gdc4.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='gdcbot4.png' style='width:100%' border='1'>";}
+    tdc1.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='tdcbot1.png' style='width:100%' border='1'>";}
+    tdc2.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='tdcbot2.png' style='width:100%' border='1'>";}
+    tdc3.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='tdcbot3.png' style='width:100%' border='1'>";}
+    tdc4.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='tdcbot4.png' style='width:100%' border='1'>";}
+    
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+
+	<!--[if IE]>
+		<center><strong>Program does not work in Internet Explorer. Please use Chrome or Firefox.</strong><br>Thank you!<center>
+	<![endif]--> 
+
+</body>
+</html>
