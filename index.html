@@ -7,6 +7,7 @@
     <link rel="icon" href="imgs/favicon.png">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/openBotsSchedule.js"></script>
@@ -21,6 +22,9 @@
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
+    <div class="container">
+        <div class="progress" id="bot_utilized_percent"></div>
+      </div>
     <p id="schedule"></p>
     <div id="bot_picture" style="width:100%"></div>
   </div>
@@ -46,7 +50,7 @@
 
 
 <!-- The Header #HTML-->
-<ul class="nav">
+<ul class="nav_bar">
     <li id="main"><button title="More Info" class="openbtn" onclick="openNav()">☰</button></li>
     <li class="media_small">
         <a href="http://dms.cbrands.com/confluence/display/RPA/Blue+Prism+-+Scheduling" target="_blank" class="header_link">Todays Bot Schedule: 
@@ -63,7 +67,7 @@
 
 <!--***********************************START BOTS PRINTED SCHEDULES #HTML************************************-->
 <center>
-    <h5 style="margin-top:10px; font-family: monospace;"> (All times below are EST) </h5>
+    <h5 class="est_time_info"> (All times below are EST) </h5>
 
     <div><h2 class="bots_server_title">GDC Bots</h2></div>
     <!--CBIGDC_PBOTZ901-->
@@ -258,17 +262,30 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
-    gdc1.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot1.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc01_runningToday+"</span>";}
-    gdc2.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot2.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc02_runningToday+"</span>";}
-    gdc3.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot3.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc03_runningToday+"</span>";}
-    gdc4.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot4.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc04_runningToday+"</span>";}
-    gdc5.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + gdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot5.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc05_runningToday+"</span>";}
-    tdc1.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot1.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc01_runningToday+"</span>";}
-    tdc2.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot2.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc02_runningToday+"</span>";}
-    tdc3.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot3.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc03_runningToday+"</span>";}
-    tdc4.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot4.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc04_runningToday+"</span>";}
-    tdc5.onclick = function() { document.getElementById('schedule').innerHTML = "Schedule (" + tdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot5.png' style='width:100%;border: 1px solid goldenrod;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc05_runningToday+"</span>";}
-    help.onclick = function() { document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>";}
+    gdc1.onclick = function() {self.bot_utilization = "100%";document.getElementById('schedule').innerHTML = "Schedule (" + gdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot1.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc01_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc2.onclick = function() {self.bot_utilization = "71%";document.getElementById('schedule').innerHTML = "Schedule (" + gdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot2.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc02_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc3.onclick = function() {self.bot_utilization = "33%";document.getElementById('schedule').innerHTML = "Schedule (" + gdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot3.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc03_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc4.onclick = function() {self.bot_utilization = "83%";document.getElementById('schedule').innerHTML = "Schedule (" + gdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot4.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc04_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc5.onclick = function() {self.bot_utilization = "0%"; document.getElementById('schedule').innerHTML = "Schedule (" + gdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot5.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc05_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc1.onclick = function() {self.bot_utilization = "75%";document.getElementById('schedule').innerHTML = "Schedule (" + tdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot1.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc01_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc2.onclick = function() {self.bot_utilization = "42%";document.getElementById('schedule').innerHTML = "Schedule (" + tdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot2.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc02_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc3.onclick = function() {self.bot_utilization = "54%";document.getElementById('schedule').innerHTML = "Schedule (" + tdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot3.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc03_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc4.onclick = function() {self.bot_utilization = "42%";document.getElementById('schedule').innerHTML = "Schedule (" + tdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot4.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc04_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc5.onclick = function() {self.bot_utilization = "0%";document.getElementById('schedule').innerHTML = "Schedule (" + tdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot5.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc05_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    help.onclick = function() {document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>";}
+    
+    
+    
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
