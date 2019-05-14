@@ -10,9 +10,15 @@ function printToScreen(bot, name){
     else{ self.monthEndDay="" }
     var available = "Nothing Currently Scheduled";
     document.getElementById(name+"_dupe").innerHTML = " ";
-    
+    self.allTimes = [];
+
     //remove days other than today 
     for (var property in bot) {
+        for (i=1;i<bot[property].length;i++){
+            if(!self.allTimes.includes(bot[property][i])){
+                self.allTimes.push(bot[property][i]);
+            }
+        }
         if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && property != "daily") {
             delete bot[property];
         }
@@ -20,7 +26,7 @@ function printToScreen(bot, name){
             delete bot[property];
         }
     }
-    
+   
     //print remaining days
     var outputs = [];
     var currentProcess = " ";
@@ -75,43 +81,53 @@ function printToScreen(bot, name){
         if(name==="CBIGDC_PBOTZ901"){
             if(self.gdc01_runningToday===undefined){self.gdc01_runningToday="";}
             if(!self.gdc01_runningToday.includes(bot[property][0])){self.gdc01_runningToday = self.gdc01_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization01 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBIGDC_PBOTZ902"){
             if(self.gdc02_runningToday===undefined){self.gdc02_runningToday="";}
             if(!self.gdc02_runningToday.includes(bot[property][0])){self.gdc02_runningToday = self.gdc02_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization02 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBIGDC_PBOTZ903"){
             if(self.gdc03_runningToday===undefined){self.gdc03_runningToday="";}
             if(!self.gdc03_runningToday.includes(bot[property][0])){self.gdc03_runningToday = self.gdc03_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization03 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBIGDC_PBOTZ904"){
             if(self.gdc04_runningToday===undefined){self.gdc04_runningToday="";}
             if(!self.gdc04_runningToday.includes(bot[property][0])){self.gdc04_runningToday = self.gdc04_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization04 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBIGDC_PBOTZ960"){
             if(self.gdc05_runningToday===undefined){self.gdc05_runningToday="";}
             if(!self.gdc05_runningToday.includes(bot[property][0])){self.gdc05_runningToday = self.gdc05_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization05 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         //tdc
         else if(name==="CBITDC_PBOTZ901"){
             if(self.tdc01_runningToday===undefined){self.tdc01_runningToday="";}
             if(!self.tdc01_runningToday.includes(bot[property][0])){self.tdc01_runningToday = self.tdc01_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization06 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBITDC_PBOTZ902"){
             if(self.tdc02_runningToday===undefined){self.tdc02_runningToday="";}
             if(!self.tdc02_runningToday.includes(bot[property][0])){self.tdc02_runningToday = self.tdc02_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization07 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBITDC_PBOTZ903"){
             if(self.tdc03_runningToday===undefined){self.tdc03_runningToday="";}
             if(!self.tdc03_runningToday.includes(bot[property][0])){self.tdc03_runningToday = self.tdc03_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization08 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBITDC_PBOTZ904"){
             if(self.tdc04_runningToday===undefined){self.tdc04_runningToday="";}
             if(!self.tdc04_runningToday.includes(bot[property][0])){self.tdc04_runningToday = self.tdc04_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization09 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
         else if(name==="CBITDC_PBOTZ960"){
             if(self.tdc05_runningToday===undefined){self.tdc05_runningToday="";}
             if(!self.tdc05_runningToday.includes(bot[property][0])){self.tdc05_runningToday = self.tdc05_runningToday + "<li>" + bot[property][0];}
+            self.bot_utilization010 = Math.round((self.allTimes.length / 24) * 100) + "%";
         }
     }
     if(bot[property]===undefined){

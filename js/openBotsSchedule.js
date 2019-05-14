@@ -58,7 +58,7 @@ self.botSched = function botSched(){
     self.CBIGDCxPBOTZ902 = {
         MEdayN3:   ["JE Posting - Non Prod",10,11,12,13,14,15,16,17],
         MEdayN2:   ["JE Posting - Non Prod",10,11,12,13,14,15,16,17],
-        day1:      ["Tax Compliance",7,8,9,14,15,16],
+        day1:      ["Tax Compliance",7,8,9,14,15,16,17,18,19,20,21],
         day2:      ["Tax Compliance",3,4,5,6,7,8,9,10,11],
 		Monday:    ["JDA In-Transit",23],
 		Tuesday:   ["Sox Term:*18*;JDA In-Transit:*23*",18,23],
@@ -82,11 +82,11 @@ self.botSched = function botSched(){
 	
 	//CBIGDC_PBOTZ904
 	self.CBIGDCxPBOTZ904 = {
-        Monday:    ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*",7,9,10,13],
-		Tuesday:   ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*",7,9,10,13],
-		Wednesday: ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*",7,9,10,13],
-		Thursday:  ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*",7,9,10,13],
-		Friday:    ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*",7,9,10,13],
+        Monday:    ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
+		Tuesday:   ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
+		Wednesday: ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
+		Thursday:  ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
+		Friday:    ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
         MEday1:    ["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
 		MEday2:    ["VAT Setup:*23*;IC Ops:*1*2*",1,2,23],
 		MEday3:    ["VAT Main Job",14,15,16,17,18,19,20]

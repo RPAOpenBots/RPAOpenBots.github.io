@@ -300,16 +300,15 @@ iframe {
   }
   
   .openbtn {
-    font-size: 17px;
-    cursor: pointer;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    background-color: #333;
+    position:fixed;
+    bottom:0;
+    left:0;
+    padding: 10px;
   }
   
   .openbtn:hover {
-    background-color: #444;
+    color: goldenrod;
+    cursor: pointer;
   }
   
   #main {
@@ -317,14 +316,13 @@ iframe {
   }
   
   .nav_bar {
-    position: fixed;
     top: 0;
     width: 100%;
     border-bottom: 1px solid goldenrod;
   }
 
   .est_time_info {
-    margin-top:4%; font-family: monospace; font-weight:bold;
+    margin-top:2%; font-family: monospace; font-weight:bold;
   }
 
 @media (max-width : 1200px) {
@@ -337,5 +335,8 @@ iframe {
     }
     .est_time_info {
         margin-top:10%;
+    }
+    .header {
+        width: 100%;
     }
 }
