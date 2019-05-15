@@ -325,6 +325,25 @@ iframe {
     margin-top:2%; font-family: monospace; font-weight:bold;
   }
 
+  /*RESERVE BOT*/
+  .reserve_time_wrapper{
+    padding-top:2%;
+    font-weight: bold;
+    font-family: monospace;
+  }
+  #reserve_bot_time {
+    font-weight: normal;
+  }
+  .non_sched_btns{
+    margin-right:2px;
+  }
+  .reserve_info {
+    margin-top:5px;
+  }
+  #reserved_times {
+    padding-top:25;
+    font-style: italic;
+  }
 @media (max-width : 1200px) {
     .media_small {
 		display:none !important;
