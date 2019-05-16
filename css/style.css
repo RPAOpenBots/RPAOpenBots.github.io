@@ -341,7 +341,7 @@ iframe {
     margin-top:5px;
   }
   #reserved_times {
-    padding-top:25;
+    padding-top:25px;
     font-style: italic;
   }
 @media (max-width : 1200px) {
