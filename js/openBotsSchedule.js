@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 05/01/2019 
+ *  LAST UPDATED: 05/17/2019 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -88,8 +88,8 @@ self.botSched = function botSched(){
 		Thursday:  ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
 		Friday:    ["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13],
         MEday1:    ["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
-		MEday2:    ["VAT Setup:*23*;IC Ops:*1*2*",1,2,23],
-		MEday3:    ["VAT Main Job",14,15,16,17,18,19,20]
+		MEday2:    ["VAT Setup",23],
+		MEday3:    ["VAT Main Job:*14*15*16*17*18*19*20*;IC Ops:*1*2*",1,2,14,15,16,17,18,19,20]
 	}
 
 	//CBIGDC_PBOTZ960
