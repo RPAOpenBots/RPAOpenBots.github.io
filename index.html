@@ -359,6 +359,9 @@
                     var reserve_process = document.getElementById('reserve_process').value;
                     if(reserve_process != "" && reserve_name != ""){
                         document.getElementById('reserve_bot_time').innerHTML = "reserving please wait..."
+                        if(self.non_sched_hours===undefined){
+                            self.non_sched_hours = [index -1];
+                        }
                         if(self.bot.reserved===undefined){
                             self.bot.reserved = [self.non_sched_hours[index]];
                         } else {
