@@ -333,16 +333,22 @@ iframe {
   }
   #reserve_bot_time {
     font-weight: normal;
+    margin-top: 10px;
   }
   .non_sched_btns{
     margin-right:2px;
+    margin-top: 2px;
   }
   .reserve_info {
-    margin-top:5px;
+    display: inline;
   }
   #reserved_times {
     padding-top:25px;
     font-style: italic;
+  }
+  .time_slot_container{
+      display:inline;
+      padding-bottom: 5px;
   }
 @media (max-width : 1200px) {
     .media_small {
