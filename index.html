@@ -1,0 +1,412 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ben Bobo">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="imgs/favicon.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/openBotsSchedule.js"></script>
+    <script src="js/isBusinessDay.js"></script>
+    <script src="js/printToScreen.js"></script>
+    <script src="js/convertToBusinessDay.js"></script>
+    <script src="js/convertDayToMonthEndDay.js"></script>
+</head>
+<body>
+<![if !IE]>
+<!-- The Modal #HTML-->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="container">
+        <div class="progress" id="bot_utilized_percent"></div>
+      </div>
+    <p id="schedule"></p>
+    <div id="bot_picture" style="width:100%"></div><hr>
+    <div class="reserve_time_wrapper">
+        <p class="time_slot_container">Reserve a time slot:</p>
+        <div class="reserve_info">
+            <input type="text" placeholder="your name" id="reserve_name" onfocus="this.value=''"></input>
+            <input type="text" placeholder="process" id="reserve_process" onfocus="this.value=''"></input>
+        </div>
+        <div id="reserve_bot_time"> Reserve Bot Time </div>
+        <div id="reserved_times"> </div>
+    </div>
+    
+  </div>
+</div>
+
+<div id="mySidebar" class="sidebar">
+   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+   <div class="footer_id"></div>
+   <div class="footer_title">Day of the week:</div>
+   <div class="footer_id" id="day"></div>
+   <div class="footer_title">Current Hour:</div>
+   <div class="footer_id" id="hour"></div>
+   <div class="footer_title">Business Day:</div>
+   <div class="footer_id" id="businessDay"></div>
+   <div class="footer_title">Month End Day:</div>
+   <div class="footer_id" id="monthEnd"></div> 
+   <a class="found_bug" href="mailto:ben.bobo@cbrands.com?subject=Open Bots Bug&body=Description of Bug/Error: "> Something Broken? <i style="font-size:18px;" class="material-icons">&#xe0be;</i></a>
+   <div class="help">
+       <i id="help" class="material-icons">&#xe887;</i>
+   </div>
+</div>
+
+
+
+<!-- The Header #HTML-->
+<ul class="nav_bar">
+    <li id="main"><div title="More Info" class="openbtn" onclick="openNav()"> <i class="material-icons">&#xe03c;</i></div></li>
+    <li class="media_small">
+        <a href="http://dms.cbrands.com/confluence/display/RPA/Blue+Prism+-+Scheduling" target="_blank" class="header_link">Todays Bot Schedule: 
+        <p class="header_todays_date" id="todaysDate"></p></a>
+    </li>
+    <li class="media_small"><a class="active">v3.2</a></li>
+    <li class="header"><a class="active"> 
+        <div class="material-icons header_change_date refresh_date media_small" onClick="window.location.reload()">&#xe5d5;</div>
+        <div class="change_date_title">Change Date:</div>
+        <input type="date" id="dateInput" class="header_date_selector">
+        <div type="submit" onclick="init(document.getElementById('dateInput').value)" class="material-icons header_change_date">&#xe8b6;</div></a>
+    </li>
+</ul>
+
+<!--***********************************START BOTS PRINTED SCHEDULES #HTML************************************-->
+<center>
+    <h5 class="est_time_info"> (All times below are EST) </h5>
+
+    <div><h2 class="bots_server_title">GDC Bots</h2></div>
+    <!--CBIGDC_PBOTZ901-->
+    <div id="GDC_PBOTZ901" class="hover bot_container" title="expand...">
+        <p title="CBIGDC_PBOTZ901" id="CBIGDC_PBOTZ901_title" class="bot_title" style="background-color:#f2f774"></p>
+        <p id="CBIGDC_PBOTZ901_body"  class="bot_body"></p> 
+        <div id="CBIGDC_PBOTZ901_resourceUnit"></div>
+        <p id="CBIGDC_PBOTZ901_available" class="bot_available"></p>
+        <p id="CBIGDC_PBOTZ901_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBIGDC_PBOTZ902-->
+    <div id="GDC_PBOTZ902" class="hover bot_container" title="expand...">
+        <p title="CBIGDC_PBOTZ902" id="CBIGDC_PBOTZ902_title" class="bot_title" style="background-color:#fc8a8a"></p>
+        <p id="CBIGDC_PBOTZ902_body" class="bot_body"></p>
+        <div id="CBIGDC_PBOTZ902_resourceUnit"></div>
+        <p id="CBIGDC_PBOTZ902_available" class="bot_available"></p>
+        <p id="CBIGDC_PBOTZ902_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBIGDC_PBOTZ903-->
+    <div id="GDC_PBOTZ903" class="hover bot_container" title="expand...">
+        <p title="CBIGDC_PBOTZ903" id="CBIGDC_PBOTZ903_title" class="bot_title" style="background-color:#79b8e5"></p>
+        <p id="CBIGDC_PBOTZ903_body" class="bot_body"></p>
+        <div id="CBIGDC_PBOTZ903_resourceUnit"></div>
+        <p id="CBIGDC_PBOTZ903_available" class="bot_available"></p>
+        <p id="CBIGDC_PBOTZ903_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBIGDC_PBOTZ904-->
+    <div id="GDC_PBOTZ904" class="hover bot_container" title="expand...">
+        <p title="CBIGDC_PBOTZ904" id="CBIGDC_PBOTZ904_title" class="bot_title" style="background-color:#f4bf7a"></p>
+        <p id="CBIGDC_PBOTZ904_body" class="bot_body"></p>
+        <div id="CBIGDC_PBOTZ904_resourceUnit"></div>
+        <p id="CBIGDC_PBOTZ904_available" class="bot_available"></p>
+        <p id="CBIGDC_PBOTZ904_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBIGDC_PBOTZ960-->
+    <div id="GDC_PBOTZ960" class="hover bot_container" title="expand...">
+        <p title="CBIGDC_PBOTZ960" id="CBIGDC_PBOTZ960_title" class="bot_title" style="background-color:#8cffda"></p>
+        <p id="CBIGDC_PBOTZ960_body"  class="bot_body"></p> 
+        <div id="CBIGDC_PBOTZ960_resourceUnit"></div>
+        <p id="CBIGDC_PBOTZ960_available" class="bot_available"></p>
+        <p id="CBIGDC_PBOTZ960_dupe" class="bot_dupe"></p>
+    </div><br>
+    <div><h2 class="bots_server_title" style="margin-top:40px;">TDC Bots</h2></div>
+    <!--CBITDC_PBOTZ901-->
+    <div id="TDC_PBOTZ901" class="hover bot_container" title="expand...">
+        <p title="CBITDC_PBOTZ901" id="CBITDC_PBOTZ901_title" class="bot_title" style="background-color:#a2dd77"></p>
+        <p id="CBITDC_PBOTZ901_body" class="bot_body"></p>
+        <div id="CBITDC_PBOTZ901_resourceUnit"></div>
+        <p id="CBITDC_PBOTZ901_available" class="bot_available"></p>
+        <p id="CBITDC_PBOTZ901_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBITDC_PBOTZ902-->
+    <div id="TDC_PBOTZ902" class="hover bot_container" title="expand...">
+        <p title="CBITDC_PBOTZ902" id="CBITDC_PBOTZ902_title" class="bot_title" style="background-color:#d2d7db"></p>
+        <p id="CBITDC_PBOTZ902_body" class="bot_body"></p>
+        <div id="CBITDC_PBOTZ902_resourceUnit"></div>
+        <p id="CBITDC_PBOTZ902_available" class="bot_available"></p>
+        <p id="CBITDC_PBOTZ902_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBITDC_PBOTZ903-->
+    <div id="TDC_PBOTZ903" class="hover bot_container" title="expand...">
+        <p title="CBITDC_PBOTZ903" id="CBITDC_PBOTZ903_title" class="bot_title" style="background-color:#edf0f2"></p>
+        <p id="CBITDC_PBOTZ903_body" class="bot_body"></p>
+        <div id="CBITDC_PBOTZ903_resourceUnit"></div>
+        <p id="CBITDC_PBOTZ903_available" class="bot_available"></p>
+        <p id="CBITDC_PBOTZ903_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBITDC_PBOTZ904-->
+    <div id="TDC_PBOTZ904" class="hover bot_container" title="expand...">
+        <p title="CBITDC_PBOTZ904" id="CBITDC_PBOTZ904_title" class="bot_title" style="background-color:#d4fcfb"></p>
+        <p id="CBITDC_PBOTZ904_body" class="bot_body"></p> 
+        <div id="CBITDC_PBOTZ904_resourceUnit"></div>
+        <p id="CBITDC_PBOTZ904_available" class="bot_available"></p>
+        <p id="CBITDC_PBOTZ904_dupe" class="bot_dupe"></p>
+    </div>
+    <!--CBITDC_PBOTZ960-->
+    <div id="TDC_PBOTZ960" class="hover bot_container" title="expand...">
+        <p title="CBITDC_PBOTZ960" id="CBITDC_PBOTZ960_title" class="bot_title" style="background-color:rgb(175, 149, 226)"></p>
+        <p id="CBITDC_PBOTZ960_body" class="bot_body"></p> 
+        <div id="CBITDC_PBOTZ960_resourceUnit"></div>
+        <p id="CBITDC_PBOTZ960_available" class="bot_available"></p>
+        <p id="CBITDC_PBOTZ960_dupe" class="bot_dupe"></p>
+    </div>
+</center>
+<!--***********************************END BOTS PRINTED SCHEDULES #HTML************************************-->
+<![endif]>
+
+
+
+<script>
+    var self = this;
+    if(self.RESERVE_DATA === undefined){
+        getReserveAPI();
+    }
+    init();
+    function init(datePassedIn){
+        self.botSched();
+        //reset printed schedules 
+        self.gdc01_runningToday = "";
+        self.gdc02_runningToday = "";
+        self.gdc03_runningToday = "";
+        self.gdc04_runningToday = "";
+        self.gdc05_runningToday = "";
+        self.tdc01_runningToday = "";
+        self.tdc02_runningToday = "";
+        self.tdc03_runningToday = "";
+        self.tdc04_runningToday = "";
+        self.tdc05_runningToday = "";
+        document.getElementById("CBIGDC_PBOTZ901_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ902_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ903_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ904_body").innerHTML = ""
+        document.getElementById("CBIGDC_PBOTZ960_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ901_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ902_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ903_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ904_body").innerHTML = ""
+        document.getElementById("CBITDC_PBOTZ960_body").innerHTML = ""
+        //date passed in?
+        if(datePassedIn!=undefined && datePassedIn!=""){
+            self.date = new Date(datePassedIn);
+            date.setDate(date.getDate() + 1)
+            self.hideAvailable = true;
+        } else {
+            self.hideAvailable = false;
+            self.date = new Date();
+        }
+        //init date variables
+        self.weekday = new Array(7);
+        weekday[0] = "Sunday";weekday[1] = "Monday";weekday[2] = "Tuesday";weekday[3] = "Wednesday";weekday[4] = "Thursday"; weekday[5] = "Friday";weekday[6] = "Saturday";
+        self.today = date.getDate();
+        self.hour = date.getHours();
+        self.day = weekday[date.getDay()];
+        self.lastDayOfMonth = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
+        self.businessDay = "";
+        self.monthEndDay = "";
+        self.TURNINGPOINT = 15;
+        
+        document.getElementById("todaysDate").innerHTML = date;
+        // Print bots to screen
+        printToScreen(CBIGDCxPBOTZ901, "CBIGDC_PBOTZ901");
+        printToScreen(CBIGDCxPBOTZ902, "CBIGDC_PBOTZ902");
+        printToScreen(CBIGDCxPBOTZ903, "CBIGDC_PBOTZ903");
+        printToScreen(CBIGDCxPBOTZ904, "CBIGDC_PBOTZ904");
+        printToScreen(CBIGDCxPBOTZ960, "CBIGDC_PBOTZ960");
+        printToScreen(CBITDCxPBOTZ901, "CBITDC_PBOTZ901");
+        printToScreen(CBITDCxPBOTZ902, "CBITDC_PBOTZ902");
+        printToScreen(CBITDCxPBOTZ903, "CBITDC_PBOTZ903");
+        printToScreen(CBITDCxPBOTZ904, "CBITDC_PBOTZ904");
+        printToScreen(CBITDCxPBOTZ960, "CBITDC_PBOTZ960");
+        //debug help 
+        console.log("Today: " + today)
+        console.log("Day of the week: " + day)
+        console.log("Hour: " + hour)
+        console.log("Business Day: " + businessDay)
+        console.log("Month End Day: " + monthEndDay)
+        document.getElementById("day").innerHTML = day;
+        if(!hideAvailable){ 
+            document.getElementById("hour").innerHTML = moment(hour + ":00:00", 'HH:mm').format('h:mm A');
+        } else {
+            document.getElementById("hour").innerHTML = "N/A";
+        }
+        document.getElementById("businessDay").innerHTML = businessDay.replace("N","-").replace("day","Day ");
+        document.getElementById("monthEnd").innerHTML = (monthEndDay.replace("N","-")).replace("MEday","Month End Day ");
+        if((monthEndDay.replace("N","-")).replace("MEday","Month End Day ") === ""){
+            document.getElementById("monthEnd").innerHTML = "N/A";
+        }
+    }
+    /*
+     * MODAL 
+    */
+    // Get the button that opens the modal
+    var gdc1 = document.getElementById("GDC_PBOTZ901");
+    var gdc2 = document.getElementById("GDC_PBOTZ902");
+    var gdc3 = document.getElementById("GDC_PBOTZ903");
+    var gdc4 = document.getElementById("GDC_PBOTZ904");
+    var gdc5 = document.getElementById("GDC_PBOTZ960");
+    var tdc1 = document.getElementById("TDC_PBOTZ901");
+    var tdc2 = document.getElementById("TDC_PBOTZ902");
+    var tdc3 = document.getElementById("TDC_PBOTZ903");
+    var tdc4 = document.getElementById("TDC_PBOTZ904");
+    var tdc5 = document.getElementById("TDC_PBOTZ960");
+    var help = document.getElementById("help");
+    var botClicked = "";
+    var modal = document.getElementById('modal');
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal 
+    gdc1.onclick = function() {reserveBotTime(self.non_sched_hours01,CBIGDCxPBOTZ901,"CBIGDC_PBOTZ901",self.reservations01);self.bot_utilization = self.bot_utilization01;document.getElementById('schedule').innerHTML = "Schedule (" + gdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot1.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc01_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc2.onclick = function() {reserveBotTime(self.non_sched_hours02,CBIGDCxPBOTZ902,"CBIGDC_PBOTZ902",self.reservations02);self.bot_utilization = self.bot_utilization02;document.getElementById('schedule').innerHTML = "Schedule (" + gdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot2.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc02_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc3.onclick = function() {reserveBotTime(self.non_sched_hours03,CBIGDCxPBOTZ903,"CBIGDC_PBOTZ903",self.reservations03);self.bot_utilization = self.bot_utilization03;document.getElementById('schedule').innerHTML = "Schedule (" + gdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot3.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc03_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc4.onclick = function() {reserveBotTime(self.non_sched_hours04,CBIGDCxPBOTZ904,"CBIGDC_PBOTZ904",self.reservations04);self.bot_utilization = self.bot_utilization04;document.getElementById('schedule').innerHTML = "Schedule (" + gdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot4.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc04_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    gdc5.onclick = function() {reserveBotTime(self.non_sched_hours05,CBIGDCxPBOTZ960,"CBIGDC_PBOTZ960",self.reservations05);self.bot_utilization = self.bot_utilization05; document.getElementById('schedule').innerHTML = "Schedule (" + gdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/gdcbot5.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.gdc05_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc1.onclick = function() {reserveBotTime(self.non_sched_hours06,CBITDCxPBOTZ901,"CBITDC_PBOTZ901",self.reservations06);self.bot_utilization = self.bot_utilization06;document.getElementById('schedule').innerHTML = "Schedule (" + tdc1.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot1.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc01_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc2.onclick = function() {reserveBotTime(self.non_sched_hours07,CBITDCxPBOTZ902,"CBITDC_PBOTZ902",self.reservations07);self.bot_utilization = self.bot_utilization07;document.getElementById('schedule').innerHTML = "Schedule (" + tdc2.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot2.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc02_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc3.onclick = function() {reserveBotTime(self.non_sched_hours08,CBITDCxPBOTZ903,"CBITDC_PBOTZ903",self.reservations08);self.bot_utilization = self.bot_utilization08;document.getElementById('schedule').innerHTML = "Schedule (" + tdc3.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot3.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc03_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc4.onclick = function() {reserveBotTime(self.non_sched_hours09,CBITDCxPBOTZ904,"CBITDC_PBOTZ904",self.reservations09);self.bot_utilization = self.bot_utilization09;document.getElementById('schedule').innerHTML = "Schedule (" + tdc4.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot4.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc04_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    tdc5.onclick = function() {reserveBotTime(self.non_sched_hours010,CBITDCxPBOTZ960,"CBITDC_PBOTZ960",self.reservations010);self.bot_utilization = self.bot_utilization010;document.getElementById('schedule').innerHTML = "Schedule (" + tdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot5.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc05_runningToday+"</span>";
+        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
+    help.onclick = function() {document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>"; document.getElementById('bot_utilized_percent').innerHTML ="";}
+    
+    
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.display = "none";
+        document.getElementById("mySidebar").style.borderRight = "1px solid goldenrod";
+    }
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("mySidebar").style.borderRight = "1px solid black";
+        document.getElementById("main").style.marginLeft= "0";
+        document.getElementById("main").style.display = "block";
+    }
+    // Refresh page every hour 
+    setInterval(function() {
+                  window.location.reload();
+    }, ((60 - date.getMinutes())*60)*1000); 
+    function reserveBotTime(non_sched_hours,bot,bot_name,reservations){
+        self.non_sched_hours = non_sched_hours;
+        self.bot = bot;
+        self.bot_name = bot_name;
+        
+        if(reservations!=undefined){
+            document.getElementById('reserved_times').innerHTML = reservations.toString().replace(/,/g,"<br>");
+        } else {
+            document.getElementById('reserved_times').innerHTML = "";
+        }
+        if(non_sched_hours === undefined){
+            non_sched_hours=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+            for(var time in non_sched_hours){ non_sched_hours[time] = moment(non_sched_hours[time] + ":00:00", 'HH:mm').format('h:mm A');}
+            document.getElementById('reserve_bot_time').innerHTML = "<button class='non_sched_btns btn btn-default btn-xs'>"+non_sched_hours.toString().replace(/,/g,"<button class='non_sched_btns btn btn-default btn-xs'>")+"</button>";
+        }
+        else if(non_sched_hours.length < 1) {
+            document.getElementById('reserve_bot_time').innerHTML = "No time slots to reserve";
+        }
+        else { 
+            for(var time in non_sched_hours){ non_sched_hours[time] = moment(non_sched_hours[time] + ":00:00", 'HH:mm').format('h:mm A');}
+            document.getElementById('reserve_bot_time').innerHTML = "<button class='non_sched_btns btn btn-default btn-xs'>"+non_sched_hours.toString().replace(/,/g,"<button class='non_sched_btns btn btn-default btn-xs'>")+"</button>";
+        }
+        var buttons = document.querySelectorAll('.' + 'non_sched_btns');
+        for (var i=0 ; i < buttons.length ; i++){
+            (function(index){
+                buttons[index].onclick = function(){
+                    var reserve_name = document.getElementById('reserve_name').value;
+                    var reserve_process = document.getElementById('reserve_process').value;
+                    if(reserve_process != "" && reserve_name != ""){
+                        document.getElementById('reserve_bot_time').innerHTML = "reserving please wait..."
+                        if(self.non_sched_hours===undefined){
+                            self.non_sched_hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+                        }
+                        if(self.bot.reserved===undefined){
+                            self.bot.reserved = [self.non_sched_hours[index]];
+                        } else {
+                            self.bot.reserved.push(self.non_sched_hours[index]);
+                        }
+                        for(var time in self.bot.reserved){self.bot.reserved[time] = Number(moment(self.bot.reserved[time],"h:mm A").format("H"));}
+                        sendReserveAPI(self.bot.reserved, self.bot_name, reserve_name, reserve_process);
+                    }
+                };
+            })(i)
+        }
+    }
+    
+    function sendReserveAPI(reservedTimes,bot_name,reserve_name,reserve_process){
+        //API DB 
+        var jsondata = {[bot_name]: reservedTimes, "name":reserve_name, "process":reserve_process};
+       
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://rpaapi-e0b7.restdb.io/rest/bots/5cdd56c63b66915f6881f8ac",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "5cdd56c63b66915f6881f8ac",
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+        }
+        $.ajax(settings).done(function (response) {
+            window.location.reload();
+        });
+    }
+    
+    function getReserveAPI(){
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "https://rpaapi-e0b7.restdb.io/rest/bots",
+            "method": "GET",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "5cdd56c63b66915f6881f8ac",
+                "cache-control": "no-cache"
+            }
+        }
+                        
+        $.ajax(settings).done(function (response) {
+            self.RESERVE_DATA = response;
+            console.log(response)
+        });
+             
+    }
+</script>
+
+	<!--[if IE]>
+		<center><strong>Program does not work in Internet Explorer. Please use Chrome or Firefox.</strong><br>Thank you!<center>
+	<![endif]--> 
+
+</body>
+</html>
