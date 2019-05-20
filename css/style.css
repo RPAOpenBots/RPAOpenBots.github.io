@@ -345,6 +345,7 @@ iframe {
   #reserved_times {
     padding-top:25px;
     font-style: italic;
+    font-weight: normal;
   }
   .time_slot_container{
       display:inline;
