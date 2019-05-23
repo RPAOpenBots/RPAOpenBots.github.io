@@ -27,7 +27,7 @@
       </div>
     <p id="schedule"></p>
     <div id="bot_picture" style="width:100%"></div><hr>
-    <div class="reserve_time_wrapper">
+    <div class="reserve_time_wrapper" id="reserve_time_wrapper">
         <p class="time_slot_container">Reserve a time slot:</p>
         <div class="reserve_info">
             <input type="text" placeholder="your name" id="reserve_name" onfocus="this.value=''"></input>
@@ -286,7 +286,7 @@
         document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
     tdc5.onclick = function() {reserveBotTime(self.non_sched_hours010,CBITDCxPBOTZ960,"CBITDC_PBOTZ960",self.reservations010);self.bot_utilization = self.bot_utilization010;document.getElementById('schedule').innerHTML = "Schedule (" + tdc5.id + "):"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<img src='imgs/tdcbot5.png' style='width:100%;border: 1px solid goldenrod;padding-bottom:1px;'><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+self.tdc05_runningToday+"</span>";
         document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"}
-    help.onclick = function() {document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>"; document.getElementById('bot_utilized_percent').innerHTML ="";}
+    help.onclick = function() {document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>"; document.getElementById('bot_utilized_percent').innerHTML ="";}
     
     
     
@@ -319,9 +319,10 @@
         self.non_sched_hours = non_sched_hours;
         self.bot = bot;
         self.bot_name = bot_name;
-        
-        if(reservations!=undefined){
-            document.getElementById('reserved_times').innerHTML = reservations.toString().replace(/,/g,"<br>");
+        document.getElementById('reserve_time_wrapper').style.display = "block";
+        if(reservations!=undefined && reservations.length > 0){
+            document.getElementById('reserved_times').innerHTML = reservations.toString().replace(/,/g,"<button class='delete_btns btn btn-danger btn-xs'>Delete</button><br>");
+            document.getElementById('reserved_times').innerHTML = document.getElementById('reserved_times').innerHTML + "<button class='delete_btns btn btn-danger btn-xs'>Delete</button>";
         } else {
             document.getElementById('reserved_times').innerHTML = "";
         }
@@ -356,6 +357,19 @@
                         for(var time in self.bot.reserved){self.bot.reserved[time] = Number(moment(self.bot.reserved[time],"h:mm A").format("H"));}
                         sendReserveAPI(self.bot.reserved, self.bot_name, reserve_name, reserve_process);
                     }
+                };
+            })(i)
+        }
+        var dlt_buttons = document.querySelectorAll('.' + 'delete_btns');
+        var text = '';
+        var ID = '';
+        for (var i=0 ; i < dlt_buttons.length ; i++){
+            (function(index){
+                dlt_buttons[index].onclick = function(text){
+                    text.currentTarget.innerText = "Deleting..."
+                    text = text.currentTarget.previousSibling.data;
+                    ID = text.substring(text.lastIndexOf("(") + 1, text.lastIndexOf(")"));
+                    deleteReserveAPI(ID);
                 };
             })(i)
         }
@@ -399,8 +413,25 @@
         $.ajax(settings).done(function (response) {
             self.RESERVE_DATA = response;
             console.log(response)
+        });   
+    }
+
+    function deleteReserveAPI(id){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://rpaapi-e0b7.restdb.io/rest/bots/"+id,
+            "method": "DELETE",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": "5cdd56c63b66915f6881f8ac",
+                "cache-control": "no-cache"
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            window.location.reload();
         });
-             
     }
 </script>
 

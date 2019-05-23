@@ -351,6 +351,9 @@ iframe {
       display:inline;
       padding-bottom: 5px;
   }
+  .delete_btns{
+      margin-left: 10px;
+  }
 @media (max-width : 1200px) {
     .media_small {
 		display:none !important;

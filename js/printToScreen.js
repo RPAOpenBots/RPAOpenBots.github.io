@@ -34,7 +34,7 @@ function printToScreen(bot, name){
             if(bot.reserved === undefined){
                 bot.reserved = ["reserved"];
             }
-            self.reservations.push(self.RESERVE_DATA[property].name + " - " + self.RESERVE_DATA[property].process + " - " + moment(self.RESERVE_DATA[property][name][0] + ":00:00", 'HH:mm').format('h:mm A'))
+            self.reservations.push(self.RESERVE_DATA[property].name + " - " + self.RESERVE_DATA[property].process + " - " + moment(self.RESERVE_DATA[property][name][0] + ":00:00", 'HH:mm').format('h:mm A') + " (" + self.RESERVE_DATA[property]._id + ")")
             bot.reserved.push(self.RESERVE_DATA[property][name][0]);
         }
     }
