@@ -320,6 +320,7 @@
         self.bot = bot;
         self.bot_name = bot_name;
         document.getElementById('reserve_time_wrapper').style.display = "block";
+
         if(reservations!=undefined && reservations.length > 0){
             document.getElementById('reserved_times').innerHTML = reservations.toString().replace(/,/g,"<button class='delete_btns btn btn-danger btn-xs'>Delete</button><br>");
             document.getElementById('reserved_times').innerHTML = document.getElementById('reserved_times').innerHTML + "<button class='delete_btns btn btn-danger btn-xs'>Delete</button>";
@@ -333,6 +334,11 @@
         }
         else if(non_sched_hours.length < 1) {
             document.getElementById('reserve_bot_time').innerHTML = "No time slots to reserve";
+        }
+        else if(typeof non_sched_hours[0] === 'string' || non_sched_hours[0] instanceof String){
+            for(var time in self.non_sched_hours){
+                self.non_sched_hours[time] = Number(moment(self.non_sched_hours[time],"h:mm A").format("H"));
+            }
         }
         else { 
             for(var time in non_sched_hours){ non_sched_hours[time] = moment(non_sched_hours[time] + ":00:00", 'HH:mm').format('h:mm A');}
