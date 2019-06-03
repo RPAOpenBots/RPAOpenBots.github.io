@@ -236,6 +236,8 @@
         console.log("Hour: " + hour)
         console.log("Business Day: " + businessDay)
         console.log("Month End Day: " + monthEndDay)
+        isBusinessDay(self.date);
+        document.getElementById("biz_day").innerHTML = self.biz_day;
         document.getElementById("day").innerHTML = day;
         if(!hideAvailable){ 
             document.getElementById("hour").innerHTML = moment(hour + ":00:00", 'HH:mm').format('h:mm A');

@@ -8,6 +8,7 @@ function printToScreen(bot, name){
     convertDayToBusinessDay(today);
     if(isBusinessDay(date)){ convertDayToMonthEndDay(date); }
     else{ self.monthEndDay="" }
+    
     var available = "Nothing Currently Scheduled";
     document.getElementById(name+"_dupe").innerHTML = " ";
     self.allTimes = [];
