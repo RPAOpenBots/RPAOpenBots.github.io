@@ -88,6 +88,9 @@ function printToScreen(bot, name){
     }
 
     // which processes are running today - show in modal
+    if(Object.keys(bot).length === 0){
+        bot.fakeprop = [[]];
+    }
     for (var property in bot) {
         if(bot[property][0].includes(";")){
             bot[property][0] = "";
