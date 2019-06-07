@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 05/30/2019 
+ *  LAST UPDATED: 06/07/2019 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -69,11 +69,11 @@ self.botSched = function botSched(){
 
     //CBIGDC_PBOTZ903
     self.CBIGDCxPBOTZ903 = {
-        Monday:    ["AP Payment",3,9,10],
-        Tuesday:   ["AP Payment",9],
-        Wednesday: ["AP Payment",3,4,5,9,10,11],
-        Thursday:  ["AP Payment",9],
-        Friday:    ["AP Payment",3,4,5,9,10,11],
+        Monday:    ["AP Payment:*6*9*10*11*;AP Morning Balances:*5*6*",5,6,6,9,10,11],
+        Tuesday:   ["AP Payment:*9*;AP Morning Balances:*5*6*",5,6,9],
+        Wednesday: ["AP Payment:*6*9*10*11*;AP Morning Balances:*5*6*",5,6,6,9,10,11],
+        Thursday:  ["AP Payment:*9*;AP Morning Balances:*5*6*",5,6,9],
+        Friday:    ["AP Payment:*9*;AP Morning Balances:*5*6*",5,6,9],
         MEday3:    ["HFM",8,17],
         MEday4:    ["HFM",8,17],
         MEday5:    ["HFM",8,17],

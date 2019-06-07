@@ -64,7 +64,7 @@ function printToScreen(bot, name){
                     } else {
                         document.getElementById(name+"_dupe").innerHTML = 
                         document.getElementById(name+"_dupe").innerHTML +
-                        "Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A') + "</br>";
+                        "Possible Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A') + "</br>";
                     }
                     bot[property][value] = moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A');
                 } else {
