@@ -91,6 +91,13 @@ function printToScreen(bot, name){
     if(Object.keys(bot).length === 0){
         bot.fakeprop = [[]];
     }
+    //don't count 12am, 1am, 2am, 11pm in bot utilization
+    self.timeLength = self.allTimes.length;
+    if(!self.allTimes.includes(0)) {timeLength = timeLength+1;}
+    if(!self.allTimes.includes(1)) {timeLength = timeLength+1;}
+    if(!self.allTimes.includes(2)) {timeLength = timeLength+1;}
+    if(!self.allTimes.includes(23)) {timeLength = timeLength+1;}
+
     for (var property in bot) {
         if(bot[property][0].includes(";")){
             bot[property][0] = "";
@@ -104,35 +111,35 @@ function printToScreen(bot, name){
         if(name==="CBIGDC_PBOTZ901"){
             if(self.gdc01_runningToday===undefined){self.gdc01_runningToday="";}
             if(!self.gdc01_runningToday.includes(bot[property][0])){self.gdc01_runningToday = self.gdc01_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization01 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization01 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours01 = nonScheduledHours;
             self.reservations01 = self.reservations;
         }
         else if(name==="CBIGDC_PBOTZ902"){
             if(self.gdc02_runningToday===undefined){self.gdc02_runningToday="";}
             if(!self.gdc02_runningToday.includes(bot[property][0])){self.gdc02_runningToday = self.gdc02_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization02 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization02 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours02 = nonScheduledHours;
             self.reservations02 = self.reservations;
         }
         else if(name==="CBIGDC_PBOTZ903"){
             if(self.gdc03_runningToday===undefined){self.gdc03_runningToday="";}
             if(!self.gdc03_runningToday.includes(bot[property][0])){self.gdc03_runningToday = self.gdc03_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization03 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization03 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours03 = nonScheduledHours;
             self.reservations03 = self.reservations;
         }
         else if(name==="CBIGDC_PBOTZ904"){
             if(self.gdc04_runningToday===undefined){self.gdc04_runningToday="";}
             if(!self.gdc04_runningToday.includes(bot[property][0])){self.gdc04_runningToday = self.gdc04_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization04 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization04 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours04 = nonScheduledHours;
             self.reservations04 = self.reservations;
         }
         else if(name==="CBIGDC_PBOTZ960"){
             if(self.gdc05_runningToday===undefined){self.gdc05_runningToday="";}
             if(!self.gdc05_runningToday.includes(bot[property][0])){self.gdc05_runningToday = self.gdc05_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization05 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization05 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours05 = nonScheduledHours;
             self.reservations05 = self.reservations;
         }
@@ -140,35 +147,35 @@ function printToScreen(bot, name){
         else if(name==="CBITDC_PBOTZ901"){
             if(self.tdc01_runningToday===undefined){self.tdc01_runningToday="";}
             if(!self.tdc01_runningToday.includes(bot[property][0])){self.tdc01_runningToday = self.tdc01_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization06 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization06 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours06 = nonScheduledHours;
             self.reservations06 = self.reservations;
         }
         else if(name==="CBITDC_PBOTZ902"){
             if(self.tdc02_runningToday===undefined){self.tdc02_runningToday="";}
             if(!self.tdc02_runningToday.includes(bot[property][0])){self.tdc02_runningToday = self.tdc02_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization07 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization07 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours07 = nonScheduledHours;
             self.reservations07 = self.reservations;
         }
         else if(name==="CBITDC_PBOTZ903"){
             if(self.tdc03_runningToday===undefined){self.tdc03_runningToday="";}
             if(!self.tdc03_runningToday.includes(bot[property][0])){self.tdc03_runningToday = self.tdc03_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization08 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization08 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours08 = nonScheduledHours;
             self.reservations08 = self.reservations;
         }
         else if(name==="CBITDC_PBOTZ904"){
             if(self.tdc04_runningToday===undefined){self.tdc04_runningToday="";}
             if(!self.tdc04_runningToday.includes(bot[property][0])){self.tdc04_runningToday = self.tdc04_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization09 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization09 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours09 = nonScheduledHours;
             self.reservations09 = self.reservations;
         }
         else if(name==="CBITDC_PBOTZ960"){
             if(self.tdc05_runningToday===undefined){self.tdc05_runningToday="";}
             if(!self.tdc05_runningToday.includes(bot[property][0])){self.tdc05_runningToday = self.tdc05_runningToday + "<li>" + bot[property][0];}
-            self.bot_utilization010 = Math.round((self.allTimes.length / 24) * 100) + "%";
+            self.bot_utilization010 = Math.round((self.timeLength / 24) * 100) + "%";
             self.non_sched_hours010 = nonScheduledHours;
             self.reservations010 = self.reservations;
         }
