@@ -33,6 +33,7 @@
         <div class="reserve_info">
             <input type="text" placeholder="your name" id="reserve_name" onfocus="this.value=''"></input>
             <input type="text" placeholder="process" id="reserve_process" onfocus="this.value=''"></input>
+            <p id="missing_info_error" style="color:red"></p>
         </div>
         <div id="reserve_bot_time"> Reserve Bot Time </div>
         <div id="reserved_times"> </div>
@@ -326,6 +327,7 @@
         self.bot_name = bot_name;
         document.getElementById('reserve_time_wrapper').style.display = "block";
         document.getElementById('utilization_bar').style.display = "block";
+        document.getElementById('missing_info_error').innerHTML = "";
 
         if(reservations!=undefined && reservations.length > 0){
             document.getElementById('reserved_times').innerHTML = reservations.toString().replace(/,/g,"<button class='delete_btns btn btn-danger btn-xs'>Delete</button><br>");
@@ -368,6 +370,8 @@
                         }
                         for(var time in self.bot.reserved){self.bot.reserved[time] = Number(moment(self.bot.reserved[time],"h:mm A").format("H"));}
                         sendReserveAPI(self.bot.reserved, self.bot_name, reserve_name, reserve_process);
+                    } else {
+                        document.getElementById('missing_info_error').innerHTML = "*Enter your name and process name";
                     }
                 };
             })(i)
