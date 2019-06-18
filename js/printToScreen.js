@@ -219,7 +219,7 @@ function printToScreen(bot, name){
     document.getElementById(name+"_available").innerHTML = available;
     if(self.hideAvailable){
         document.getElementById(name+"_available").innerHTML = " ";
-        document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_dupe' style='color:darkgrey'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
+        document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_available' style='color:darkgrey'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
     }
     
 }
