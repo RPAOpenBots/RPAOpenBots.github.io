@@ -325,6 +325,14 @@ iframe {
     margin-top:2%; font-family: monospace; font-weight:bold;
   }
 
+  .bot_ut_info {
+    font-family: monospace;
+    font-size: x-small;
+    margin: 0;
+    float: right;
+    padding-left: 5px;
+  }
+
   /*RESERVE BOT*/
   .reserve_time_wrapper{
     padding-top:2%;
