@@ -180,7 +180,7 @@ function printToScreen(bot, name){
             self.reservations010 = self.reservations;
         }
     }
-    if(bot[property]===undefined){
+    if(bot[property][0].length === 0){
         if(name==="CBIGDC_PBOTZ901"){self.gdc01_runningToday="<li>nothin runnin...  ¯\\_(ツ)_/¯"}
         if(name==="CBIGDC_PBOTZ902"){self.gdc02_runningToday="<li>nothin runnin...  ¯\\_(ツ)_/¯"}
         if(name==="CBIGDC_PBOTZ903"){self.gdc03_runningToday="<li>nothin runnin...  ¯\\_(ツ)_/¯"}
