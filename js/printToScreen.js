@@ -76,11 +76,11 @@ function printToScreen(bot, name){
                         for(value in splitProcesses){
                             if(splitProcesses[value].includes("*"+hour+"*") && !hideAvailable){
                                 currentProcess = splitProcesses[value].split(":");
-                                currentProcess = "<span style='color:red'>Running: " + currentProcess[0] + "</span>";
+                                currentProcess = "<span style='color:red'>Scheduled: " + currentProcess[0] + "</span>";
                             }
                         }
                     } else {
-                        currentProcess = "<span style='color:red'>Running: " + bot[property][value]+"</span>";
+                        currentProcess = "<span style='color:red'>Scheduled: " + bot[property][value]+"</span>";
                     }
                 }
             }

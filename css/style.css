@@ -128,6 +128,8 @@ li a:hover {
     margin: 1em 0px;
     border: solid 1px black;
     border-width: 0px 1px 0px 1px; 
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 .bot_dupe{
     font-weight: bold; 
@@ -138,7 +140,18 @@ li a:hover {
     margin: 1em 0px;
     padding: 0;
     border: solid 1px black;
-    border-width: 0px 1px 1px 1px;
+    border-width: 0px 1px 0px 1px;
+    line-height: normal;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.btn-link {
+    width:100%;
+    border-radius: 0 !important;
+    border: solid 1px black !important;
+    border-width: 1px 1px 1px 1px !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 .active {
     font-family: monospace;
@@ -212,6 +225,8 @@ iframe {
     margin-left: 0 !important;
     padding-left: 0 !important;
 }
+
+
 
 /****************** FOOTER INFO ******************/
 .footer_container {
