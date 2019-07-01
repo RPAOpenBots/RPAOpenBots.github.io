@@ -344,7 +344,7 @@
         }
         self.src = self.src.replace("username",self.uname)
         self.src = self.src.replace("pwd",self.pword)
-        document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-primary btn btn-sm' onclick='clear_login_data()'>Redo Login</button><br><iframe src='"+src+"' style='height:600px'></iframe>"; 
+        document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr><iframe src='"+src+"' style='height:600px'></iframe>"; 
     }
     function clear_login_data(){
         localStorage.clear();
