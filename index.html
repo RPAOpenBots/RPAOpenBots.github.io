@@ -41,7 +41,6 @@
     
   </div>
 </div>
-
 <div id="mySidebar" class="sidebar">
    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
    <div class="footer_id"></div>
@@ -71,6 +70,7 @@
         <p class="header_todays_date" id="todaysDate"></p></a>
     </li>
     <li class="media_small"><a class="active">v3.2 - (<strong style="text-decoration:underline;">all times are EST</strong>)</a></li>
+    <li class="header_all_statuses header_change_date"><a class='active' onclick="bot_status_iframe_login('FALSE')">Check All Statuses</a></li>
     <li class="header"><a class="active"> 
         <div class="material-icons header_change_date refresh_date media_small" onClick="window.location.reload()">&#xe5d5;</div>
         <div class="change_date_title">Change Date:</div>
@@ -304,7 +304,11 @@
     help.onclick = function() {document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Help:"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe src='imgs/help.pdf' style='height:600px'></iframe>"; document.getElementById('bot_utilized_percent').innerHTML ="";}
     //IFRAME Call on Port
     function bot_status_iframe_login(src) {
-        document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Processes ran/running since last logout:"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
+        if(src != 'FALSE'){
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Processes ran/running since last logout:"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
+        } else {
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="All online processes should read: 'AUTOMATE RESOURCE PC / LISTENER *'"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
+        }
         self.src = src;
         self.uname = localStorage.getItem('cwc_iframe_bp_uname');
         self.pword = localStorage.getItem('cwc_iframe_bp_pword');
@@ -342,9 +346,23 @@
         } else {
             localStorage.setItem('cwc_iframe_bp_pword',self.pword);
         }
-        self.src = self.src.replace("username",self.uname)
-        self.src = self.src.replace("pwd",self.pword)
-        document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr><iframe src='"+src+"' style='height:600px'></iframe>"; 
+        if(self.src != 'FALSE'){
+            self.src = self.src.replace("username",self.uname)
+            self.src = self.src.replace("pwd",self.pword)
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr><iframe src='"+src+"' style='height:600px'></iframe>"; 
+        } else {
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr>"; 
+            document.getElementById('bot_picture').innerHTML += "GDC901:<iframe src='http://cbigdc-pbotz901.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "GDC902:<iframe src='http://cbigdc-pbotz902.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "GDC903:<iframe src='http://cbigdc-pbotz903.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "GDC904:<iframe src='http://cbigdc-pbotz904.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "GDC960:<iframe src='http://cbigdc-pbotz960.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "TDC901:<iframe src='http://cbitdc-pbotz901.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "TDC902:<iframe src='http://cbitdc-pbotz902.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "TDC903:<iframe src='http://cbitdc-pbotz903.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "TDC904:<iframe src='http://cbitdc-pbotz904.cbi.net:8181/version'></iframe>"
+            document.getElementById('bot_picture').innerHTML += "TDC960:<iframe src='http://cbitdc-pbotz960.cbi.net:8181/version'></iframe>"
+        }
     }
     function clear_login_data(){
         localStorage.clear();
