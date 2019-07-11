@@ -255,7 +255,6 @@ iframe {
     font-size: 11px !important;
     font-weight: bold;
     bottom: 75px;
-    position: absolute;
 }
 .found_bug:hover {
     color: purple;
