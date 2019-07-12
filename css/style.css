@@ -7,11 +7,14 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    display: table;
+    table-layout: auto;
 }
 
 li {
-    float: left;
     border-right:1px solid #bbb;
+    display: table-cell;
+    height: 25px;
 }
 
 li:last-child {
@@ -32,7 +35,7 @@ li a:hover {
 
 /****************** Header ******************/ 
 .header {
-    float:right;
+   
 }
 .header_link_h2 {
     display:inline;
@@ -397,6 +400,6 @@ iframe {
         margin-top:10%;
     }
     .header, .header_all_statuses {
-        width: 100%;
+        
     }
 }
