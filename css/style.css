@@ -13,8 +13,12 @@ ul {
 
 li {
     border-right:1px solid #bbb;
-    display: table-cell;
+    display: block;
     height: 25px;
+}
+
+.table-cell {
+    display: table-cell !important;
 }
 
 li:last-child {
