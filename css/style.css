@@ -25,6 +25,10 @@ li:last-child {
     border-right: none;
 }
 
+#main {
+    border-right: none !important;
+}
+
 li a {
     display: block;
     color: white;

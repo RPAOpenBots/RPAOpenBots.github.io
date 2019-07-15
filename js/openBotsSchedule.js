@@ -135,10 +135,10 @@ self.botSched = function botSched(){
 	//CBITDC_PBOTZ904
     self.CBITDCxPBOTZ904 = {
 		Monday:    ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;SnM Program Balances:*3*4*",3,4,5,6,8,9,10],
-		Tuesday:   ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;SnM Program Balances:*3*4*;Report Assembly:*13*14*15*16*",3,4,5,6,8,9,10,13,14,15,16],
-		Wednesday: ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;SnM Program Balances:*3*4*",3,4,5,6,8,9,10],
-		Thursday:  ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;SnM Program Balances:*3*4*",3,4,5,6,8,9,10],
-		Friday:    ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;SnM Program Balances:*3*4*",3,4,5,6,8,9,10]
+		Tuesday:   ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*;Report Assembly:*13*14*15*16*",5,6,8,9,10,13,14,15,16],
+		Wednesday: ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10],
+		Thursday:  ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10],
+		Friday:    ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10]
 	}
 	
 	//CBITDC_PBOTZ960
