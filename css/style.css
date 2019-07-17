@@ -164,6 +164,12 @@ li a:hover {
     padding-top: 3px;
     padding-bottom: 3px;
 }
+.btn {
+    /* color:black !important; */
+}
+.btn:hover {
+    opacity: .5 !important;
+}
 .active {
     font-family: monospace;
 }
