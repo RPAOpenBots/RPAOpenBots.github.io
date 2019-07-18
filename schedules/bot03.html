@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../js/openBotsSchedule.js"></script>
+<style>
+	.color_it {
+		/* CHANGE THIS COLOR FOR BOT SCHEDULE */
+		background-color: #79b8e5;
+	}
+	#bot {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	#bot td {
+		border: 1px solid #8f8f8f;
+		padding: 8px;
+	}
+	#bot tr:nth-child(even){background-color: #f2f2f2;}
+	#bot th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #85898c;
+		color: white;
+		border: 1px solid black;
+	}
+</style>
+</head>
+<body>
+<div id="schedule"></div>
+
+<script>
+	let self = this;
+	self.botSched();
+
+	// **FOR NEW BOT**
+	// CHANGE LINE BELOW FOR NEW BOT
+	let BOT = CBIGDCxPBOTZ903;
+
+	self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
+	for (property in BOT){
+		let splitProcesses = "";
+		let doubleSplit = "";
+		let spaces = "";
+		if(BOT[property][0].includes("*")){
+			console.log(BOT[property][0])
+			splitProcesses = BOT[property][0].split(";");
+			let count = 0;
+			for (process in splitProcesses) {
+				count++;
+				doubleSplit = splitProcesses[process].split("*");
+				doubleSplit[0] = doubleSplit[0].split(":").join("");
+				doubleSplit.pop();
+				for (time in doubleSplit) {
+					if(time!="0"){
+						doubleSplit[time]=Number(doubleSplit[time]);
+					}
+				}
+				for (var i=0 ; i < count ; i++) {
+					spaces += " ";
+				}
+				BOT[property + spaces] = doubleSplit;
+			}
+			delete BOT[property];
+		}
+	}
+	for (property in BOT){
+		let splitProcesses = "";
+		let doubleSplit = "";
+		if(BOT[property][0].includes("*")){
+			console.log(BOT[property][0])
+			splitProcesses = BOT[property][0].split(";");
+			let count = 0;
+			for (process in splitProcesses) {
+				count++;
+				doubleSplit = splitProcesses[process].split("*");
+				doubleSplit[0] = doubleSplit[0].split(":").join("");
+				doubleSplit.pop();
+				for (time in doubleSplit) {
+					if(time!="0"){
+						doubleSplit[time]=Number(doubleSplit[time]);
+					}
+				}
+				BOT[property + "(" + count + ")"] = doubleSplit;
+			}
+			delete BOT[property];
+			continue;
+		}
+		for (time in BOT[property]){
+			
+			//Format Name
+			new_property = property;
+			new_property = new_property.split("daily").join("Daily");
+			new_property = new_property.split("EXCEPT").join(" Except ");
+			new_property = new_property.split("MEday").join("Close Day ");
+			new_property = new_property.split("day").join("day ");
+			new_property = new_property.split("N").join("-");
+			new_property = new_property.split("_").join(" ");
+			//Process Name
+			if(time === "0"){
+				self.sched += "<tr><td>"+BOT[property][time]+"</td>";
+				self.sched += "<td>"+new_property+"</td>";
+			}
+		}
+		let counter = 0;
+		for (var i=0 ; i < 24 ; i++){
+				if(BOT[property][counter+1] !== undefined && BOT[property][counter+1] === i){
+					self.sched += "<td class='color_it'></td>";
+					counter++;
+				} else {
+					self.sched += "<td></td>"
+				}
+			}	
+		self.sched += "</tr>"
+	}
+	self.sched += "</table>"
+	document.getElementById('schedule').innerHTML = self.sched;
+</script>
+
+<!-- 
+  <tr>
+    <td>MJE</td>
+    <td>Not Day 2</td>
+    <td></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+  </tr>
+  <tr>
+    <td>MJE</td>
+    <td>Month End Day 2</td>
+    <td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td class='color_it'></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+  </tr>
+</table> -->
+
+</body>
+</html>

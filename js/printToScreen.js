@@ -21,10 +21,16 @@ function printToScreen(bot, name){
                 self.allTimes.push(bot[property][i]);
             }
         }
-        if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && property != "daily") {
+        if(property.includes("EXCEPT")){
+            result = checkException(property);
+            bot[result] = bot[property];
+            delete bot[property];
+            property = result;
+        }
+        if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && (property != "daily" || day === "Saturday" || day == "Sunday")) {
             delete bot[property];
         }
-        if(bot.hasOwnProperty(property) && businessDay != property && property != day && property != "daily" && property != monthEndDay){
+        if(bot.hasOwnProperty(property) && businessDay != property && property != day && (property != "daily" || day === "Saturday" || day == "Sunday") && property != monthEndDay){
             delete bot[property];
         }
     }
@@ -220,6 +226,22 @@ function printToScreen(bot, name){
     if(self.hideAvailable){
         document.getElementById(name+"_available").innerHTML = " ";
         document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_available' style='color:darkgrey'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
+    }
+
+    function checkException(property) {
+        exceptions = property.split("_");
+        valid = true;
+        for (exception in exceptions) {
+            if(exceptions[exception] === monthEndDay || exceptions[exception] === day || exceptions[exception] === businessDay) {
+                valid = false;
+            }
+        }
+        if(valid){
+            property = exceptions[0].split("EXCEPT")[0];
+        } else {
+            property = "Not Valid";
+        }
+        return property;
     }
     
 }
