@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 07/17/2019 
+ *  LAST UPDATED: 07/22/2019 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -78,14 +78,14 @@ self.botSched = function botSched(){
 
     //CBITDC_PBOTZ903
     self.CBITDCxPBOTZ903 = {
-		Friday:    ["IT-Proj Cost Calc",12],
+        Friday:    ["IT-Proj Cost Calc",12],
         Saturday:  ["Approved Price Block",6,9,11,14,16,18],
-		MEdayN5:   ["Capitilization of Projects",2,3,4,5],
+        daily:     ["Approved Price Block:*6*9*11*14*16*18*;Job Cost Setup:*22*23*",6,9,11,14,16,18,22,23],
+        MEdayN5:   ["Capitilization of Projects",2,3,4,5],
         MEdayN4:   ["Capitilization of Projects",2,3,4,5],
         MEdayN3:   ["Capitilization of Projects",2,3,4,5],
         MEdayN2:   ["Capitilization of Projects",2,3,4,5],
-		MEdayN1:   ["Capitilization of Projects",2,3,4,5],
-		daily:     ["Approved Price Block:*6*9*11*14*16*18*;Job Cost Setup:*22*23*",6,9,11,14,16,18,22,23]
+        MEdayN1:   ["Capitilization of Projects",2,3,4,5]
     }
 	
 	//CBITDC_PBOTZ904

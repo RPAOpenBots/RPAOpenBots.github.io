@@ -11,22 +11,30 @@
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
 		width: 100%;
+		height: 100%
 	}
 	#bot td {
 		border: 1px solid #8f8f8f;
-		padding: 8px;
+		padding: 3px;
+		font-size: 14px;
 	}
 	#bot tr:nth-child(even){background-color: #f2f2f2;}
 	#bot th {
-		padding-top: 12px;
-		padding-bottom: 12px;
-		text-align: left;
 		background-color: #85898c;
 		color: white;
-		border: 1px solid black;
 	}
 	body{
 		height:100%;
+	}
+	th {
+		position: sticky;
+		top: 0;
+	}
+	th:last-child {
+		border-right: 1px solid #85898c;
+	}
+	th:first-child {
+		border-left: 1px solid #85898c;
 	}
 </style>
 </head>
@@ -108,13 +116,21 @@
 		}
 		let counter = 0;
 		for (var i=0 ; i < 24 ; i++){
-				if(BOT[property][counter+1] !== undefined && BOT[property][counter+1] === i){
-					self.sched += "<td class='color_it'></td>";
-					counter++;
+			if(BOT[property][counter+1] !== undefined && BOT[property][counter+1] === i){
+				if (i===0 || i===1 || i===2 || i===23) {
+					self.sched += "<td class='color_it'><center>*</center></td>";
 				} else {
-					self.sched += "<td></td>"
+					self.sched += "<td class='color_it'></td>";
 				}
-			}	
+				counter++;
+			} else {
+				if (i===0 || i===1 || i===2 || i===23) {
+					self.sched += "<td><center>*</center></td>";
+				} else {
+					self.sched += "<td></td>";
+				}
+			}
+		}	
 		self.sched += "</tr>"
 	}
 	self.sched += "</table>"
