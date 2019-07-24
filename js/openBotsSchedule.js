@@ -74,6 +74,13 @@ self.botSched = function botSched(){
     //CBITDC_PBOTZ902
     self.CBITDCxPBOTZ902 = {
         daily:     ["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*",5,8,9,11,12,13,14,15,16,17],
+		MEdayN2:   ["FPA - Plan Forecast",6,7],
+		MEdayN1:   ["FPA - Plan Forecast",6,7],
+		MEday1:    ["FPA - Plan Forecast",6,7],
+		MEday2:    ["FPA - Plan Forecast",6,7],
+		MEday3:    ["FPA - Plan Forecast",6,7],
+		MEday4:    ["FPA - Plan Forecast",6,7],
+		MEday5:    ["FPA - Plan Forecast",6,7],
     }
 
     //CBITDC_PBOTZ903
