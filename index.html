@@ -307,7 +307,7 @@
         if(src != 'FALSE'){
             document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Processes ran/running since last logout:"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
         } else {
-            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="All online processes should read: 'AUTOMATE RESOURCE PC / LISTENER *'"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='letter-spacing:0'>Should read: 'AUTOMATE RESOURCE PC / LISTENER *'<br>If blank enable mixed content!<center><a target='_blank' href='schedules.html'>Open All Schedules</a></center><hr></span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
         }
         self.src = src;
         self.uname = localStorage.getItem('cwc_iframe_bp_uname');
@@ -349,9 +349,9 @@
         if(self.src != 'FALSE'){
             self.src = self.src.replace("username",self.uname)
             self.src = self.src.replace("pwd",self.pword)
-            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr><iframe src='"+src+"' style='height:600px'></iframe>"; 
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><iframe src='"+src+"' style='height:600px'></iframe>"; 
         } else {
-            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Redo Login</button><hr>"; 
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr>"; 
             document.getElementById('bot_picture').innerHTML += "GDC901:<iframe src='http://cbigdc-pbotz901.cbi.net:8181/version'></iframe>"
             document.getElementById('bot_picture').innerHTML += "GDC902:<iframe src='http://cbigdc-pbotz902.cbi.net:8181/version'></iframe>"
             document.getElementById('bot_picture').innerHTML += "GDC903:<iframe src='http://cbigdc-pbotz903.cbi.net:8181/version'></iframe>"
