@@ -14,6 +14,20 @@ function printToScreen(bot, name){
     self.allTimes = [];
     self.reservations = [];
 
+    //Expand 'to' date spans (i.e. MEdayN5_to_N1)
+    for (var property in bot) {
+        if(property.includes("_to_")){
+            result = checkToSpan(property);
+            
+            for (time in result){
+                let nameFormat = result[time];
+                bot[nameFormat] = bot[property];
+                
+            }
+            delete bot[property];
+        }
+    }
+
     //remove days other than today 
     for (var property in bot) {
         for (i=1;i<bot[property].length;i++){
@@ -21,12 +35,14 @@ function printToScreen(bot, name){
                 self.allTimes.push(bot[property][i]);
             }
         }
+        //Translate 'EXCEPT' dates 
         if(property.includes("EXCEPT")){
             result = checkException(property);
             bot[result] = bot[property];
             delete bot[property];
             property = result;
         }
+    
         if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && (property != "daily" || day === "Saturday" || day == "Sunday")) {
             delete bot[property];
         }
@@ -34,6 +50,9 @@ function printToScreen(bot, name){
             delete bot[property];
         }
     }
+
+    
+
 
     //add reserved times 
     for (var property in self.RESERVE_DATA) {
@@ -242,6 +261,24 @@ function printToScreen(bot, name){
             property = "Not Valid";
         }
         return property;
+    }
+
+    function checkToSpan(property){
+        span = property.split("_");
+        span[1] = span[2];
+        span.pop();
+        let count = 0;
+        let firstElement = span[0];
+        let lastElement = span[1];
+        let dayFormat = firstElement.substring(0, firstElement.indexOf("day")) + "day";
+        firstElement = Number(firstElement.split("day").pop().replace("N","-"));
+        lastElement = Number(lastElement.split("day").pop().replace("N","-"));
+        while(firstElement <= lastElement) {
+            span[count] = dayFormat + String(firstElement).replace("-","N");
+            count++;
+            firstElement++;
+        }
+        return span;
     }
     
 }
