@@ -66,7 +66,7 @@
 <ul class="nav_bar">
     <li id="main"><div title="More Info" class="openbtn" onclick="openNav()"> <i class="material-icons">&#xe03c;</i></div></li>
     <li class="media_small table-cell">
-        <a href="http://dms.cbrands.com/confluence/display/RPA/Blue+Prism+-+Scheduling" target="_blank" class="header_link">Todays Bot Schedule: 
+        <a href="schedules.html" target="_blank" class="header_link">Todays Bot Schedule: 
         <p class="header_todays_date" id="todaysDate"></p></a>
     </li>
     <li class="media_small table-cell"><a class="active">v4.0 - (<strong>all times are EST</strong>)</a></li>
@@ -307,7 +307,7 @@
         if(src != 'FALSE'){
             document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Processes ran/running since last logout:"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
         } else {
-            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='letter-spacing:0'>Should read: 'AUTOMATE RESOURCE PC / LISTENER *'<br>If blank enable mixed content!<center><a target='_blank' href='schedules.html'>Open All Schedules</a></center><hr></span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='letter-spacing:0'>Should read: 'AUTOMATE RESOURCE PC / LISTENER *'<br>If blank enable mixed content!<hr></span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
         }
         self.src = src;
         self.uname = localStorage.getItem('cwc_iframe_bp_uname');
