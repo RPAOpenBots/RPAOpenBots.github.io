@@ -51,8 +51,7 @@
 	// CHANGE LINE BELOW FOR NEW BOT
 	let BOT = CBITDCxPBOTZ903;
 
-		
-		self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
+	self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
 	for (property in BOT){
 		let splitProcesses = "";
 		let doubleSplit = "";
@@ -166,13 +165,15 @@
 			return checkWeekNumber(property);
 		} else if(property.includes("_to_")){
             return checkToSpan(property);
-        } else if(property === days[date.getDay()] || property === "daily" || property === localStorage.getItem("monthEndDay") || property === localStorage.getItem("businessDay")){
+        } else if(property === days[date.getDay()] || (property === "daily" && days[date.getDay()] != "Saturday"  && days[date.getDay()] != "Sunday") || property === localStorage.getItem("monthEndDay") || property === localStorage.getItem("businessDay")){
 			return true;
 		}
 		return false;
 	}
 	function checkException(property) {
-        exceptions = property.split("_");
+		exceptions = property.split("_");
+		let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		date = new Date(localStorage.getItem("date"));
         valid = true;
         for (exception in exceptions) {
             if(exceptions[exception] === localStorage.getItem("monthEndDay") || exceptions[exception] === localStorage.getItem("day") || exceptions[exception] === localStorage.getItem("businessDay")) {
@@ -180,7 +181,9 @@
             }
         }
         if(valid){
-            property = true;
+			if(exceptions[0].split("EXCEPT")[0] = "daily" && days[date.getDay()] != "Sunday" && days[date.getDay()] != "Saturday"){
+				   property = true;
+			}
         } else {
             property = false;
         }

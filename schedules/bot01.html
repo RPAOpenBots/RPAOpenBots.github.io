@@ -166,13 +166,15 @@
 			return checkWeekNumber(property);
 		} else if(property.includes("_to_")){
             return checkToSpan(property);
-        } else if(property === days[date.getDay()] || property === "daily" || property === localStorage.getItem("monthEndDay") || property === localStorage.getItem("businessDay")){
+        } else if(property === days[date.getDay()] || (property === "daily" && days[date.getDay()] != "Saturday"  && days[date.getDay()] != "Sunday") || property === localStorage.getItem("monthEndDay") || property === localStorage.getItem("businessDay")){
 			return true;
 		}
 		return false;
 	}
 	function checkException(property) {
-        exceptions = property.split("_");
+		exceptions = property.split("_");
+		let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		date = new Date(localStorage.getItem("date"));
         valid = true;
         for (exception in exceptions) {
             if(exceptions[exception] === localStorage.getItem("monthEndDay") || exceptions[exception] === localStorage.getItem("day") || exceptions[exception] === localStorage.getItem("businessDay")) {
@@ -180,7 +182,9 @@
             }
         }
         if(valid){
-            property = true;
+			if(exceptions[0].split("EXCEPT")[0] = "daily" && days[date.getDay()] != "Sunday" && days[date.getDay()] != "Saturday"){
+				   property = true;
+			}
         } else {
             property = false;
         }
