@@ -101,12 +101,18 @@
 			
 			//Format Name
 			new_property = property;
+			new_property = new_property.split("FIRST").join("1st");
+			new_property = new_property.split("SECOND").join("2nd");
+			new_property = new_property.split("THIRD").join("3rd");
+			new_property = new_property.split("FOURTH").join("4th");
+			new_property = new_property.split("FIFTH").join("5th");
 			new_property = new_property.split("daily").join("Daily");
 			new_property = new_property.split("EXCEPT").join(" Except ");
 			new_property = new_property.split("MEday").join("Close Day ");
 			new_property = new_property.split("day").join("day ");
 			new_property = new_property.split("N").join("-");
 			new_property = new_property.split("_").join(" ");
+	
 			//Process Name
 			if(time === "0"){
 				self.sched += "<tr><td>"+BOT[property][time]+"</td>";

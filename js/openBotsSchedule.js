@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 08/01/2019 
+ *  LAST UPDATED: 08/15/2019 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -10,6 +10,9 @@
  *  Month End day -1 = "MEdayN1" 
  *  Daily = "daily" (daily is week days Mon-Fri)
  *  Monday, Tuesday, etc... = "Monday", "Tuesday", etc... 
+ *  Every day except = example: "dailyEXCEPT_MEday1"
+ *  1st/2nd/3rd/4th/5th day = "FIRST_Monday","THIRD_THURSDAY",etc...
+ *  date to date = "MEdayN3_to_MEdayN2", etc...
  *	-----------------------------------------------------------
  *	[0] element will always be the name of the process. 
  *	If multiple processes run the same calendar coding on the same bot; list processes with following notation:
@@ -49,7 +52,7 @@ self.botSched = function botSched(){
 	
 	//CBIGDC_PBOTZ904
 	self.CBIGDCxPBOTZ904 = {
-		Wednesday:          ["IT - AD Reconciliation",12],
+		FIRST_Wednesday:    ["IT - AD Reconciliation",12],
         MEday1:             ["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
 		MEday2:             ["VAT Setup",23],
 		MEday3:             ["VAT Main Job:*14*15*16*17*18*19*20*;IC Ops:*1*2*",1,2,14,15,16,17,18,19,20],
@@ -77,7 +80,8 @@ self.botSched = function botSched(){
 
     //CBITDC_PBOTZ903
     self.CBITDCxPBOTZ903 = {
-        Friday:             ["IT-Proj Cost Calc",12],
+        SECOND_Friday:      ["IT-Proj Cost Calc",12],
+        FOURTH_Friday:      ["IT-Proj Cost Calc",12],
         Saturday:           ["Approved Price Block",6,9,11,14,16,18],
         daily:              ["Approved Price Block:*6*9*11*14*16*18*;Job Cost Setup:*22*23*",6,9,11,14,16,18,22,23],
         MEdayN5_to_MEdayN1: ["Capitilization of Projects",2,3,4,5],

@@ -42,6 +42,14 @@ function printToScreen(bot, name){
             delete bot[property];
             property = result;
         }
+        //Translate 'FIRST','SECOND','THIRD','FOURTH','FIFTH'
+        if(property.includes("FIRST") || property.includes("SECOND") || property.includes("THIRD") || property.includes("FOURTH") || property.includes("FIFTH")){
+            result = checkWeekNumber(property);
+            if(!result){ 
+                delete bot[property];
+            }
+            continue;
+        }
     
         if (bot.hasOwnProperty(property) && businessDay != property && property.startsWith("day") && (property != "daily" || day === "Saturday" || day == "Sunday")) {
             delete bot[property];
@@ -261,6 +269,36 @@ function printToScreen(bot, name){
             property = "Not Valid";
         }
         return property;
+    }
+
+    function checkWeekNumber(property) {
+        property = property.split("_");
+        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        let dayCounter = 0;
+        let result = false;
+        while(firstDay.getDate() <= date.getDate()){
+            if(days[firstDay.getDay()] === property[1]){
+                dayCounter=dayCounter+1;
+            }
+            firstDay.setDate(firstDay.getDate()+1);
+        }
+        if(dayCounter === 1 && property[0] === "FIRST" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 2 && property[0] === "SECOND" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 3 && property[0] === "THIRD" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 4 && property[0] === "FOURTH" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 5 && property[0] === "FIFTH" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        return result;
     }
 
     function checkToSpan(property){
