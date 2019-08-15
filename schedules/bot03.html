@@ -7,6 +7,9 @@
 		/* CHANGE THIS COLOR FOR BOT SCHEDULE */
 		background-color: #79b8e5;
 	}
+	.color_it_now {
+		background-color: yellow;
+	}
 	#bot {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
@@ -48,7 +51,8 @@
 	// CHANGE LINE BELOW FOR NEW BOT
 	let BOT = CBIGDCxPBOTZ903;
 
-	self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
+		
+		self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
 	for (property in BOT){
 		let splitProcesses = "";
 		let doubleSplit = "";
@@ -109,10 +113,10 @@
 			new_property = new_property.split("daily").join("Daily");
 			new_property = new_property.split("EXCEPT").join(" Except ");
 			new_property = new_property.split("MEday").join("Close Day ");
-			new_property = new_property.split("day").join("day ");
 			new_property = new_property.split("N").join("-");
 			new_property = new_property.split("_").join(" ");
-			
+			if(new_property.length <= 5){new_property = new_property.split("day").join("Day ");}
+		
 			//Process Name
 			if(time === "0"){
 				self.sched += "<tr><td>"+BOT[property][time]+"</td>";
@@ -121,13 +125,24 @@
 		}
 		let counter = 0;
 		for (var i=0 ; i < 24 ; i++){
+			// IN SCHEDULE
 			if(BOT[property][counter+1] !== undefined && BOT[property][counter+1] === i){
-				if (i===0 || i===1 || i===2 || i===23) {
-					self.sched += "<td class='color_it'><center>*</center></td>";
+				// IF IS RUNNING TODAY
+				if(isTimeToday(property.trim())){
+					if (i===0 || i===1 || i===2 || i===23) {
+						self.sched += "<td class='color_it_now'><center>*</center></td>";
+					} else {
+						self.sched += "<td class='color_it_now'></td>";
+					}
 				} else {
-					self.sched += "<td class='color_it'></td>";
+					if (i===0 || i===1 || i===2 || i===23) {
+						self.sched += "<td class='color_it'><center>*</center></td>";
+					} else {
+						self.sched += "<td class='color_it'></td>";
+					}
 				}
 				counter++;
+			// NOT IN SCHEDULE
 			} else {
 				if (i===0 || i===1 || i===2 || i===23) {
 					self.sched += "<td><center>*</center></td>";
@@ -135,11 +150,95 @@
 					self.sched += "<td></td>";
 				}
 			}
-		}		
+		}	
 		self.sched += "</tr>"
 	}
 	self.sched += "</table>"
 	document.getElementById('schedule').innerHTML = self.sched;
+
+	function isTimeToday(property){
+		let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		date = new Date(localStorage.getItem("date"));
+		//Translate 'EXCEPT' dates 
+		if(property.includes("EXCEPT")){
+			return checkException(property);
+		} else if (property.includes("FIRST") || property.includes("SECOND") || property.includes("THIRD") || property.includes("FOURTH") || property.includes("FIFTH")) {
+			return checkWeekNumber(property);
+		} else if(property.includes("_to_")){
+            return checkToSpan(property);
+        } else if(property === days[date.getDay()] || property === "daily" || property === localStorage.getItem("monthEndDay") || property === localStorage.getItem("businessDay")){
+			return true;
+		}
+		return false;
+	}
+	function checkException(property) {
+        exceptions = property.split("_");
+        valid = true;
+        for (exception in exceptions) {
+            if(exceptions[exception] === localStorage.getItem("monthEndDay") || exceptions[exception] === localStorage.getItem("day") || exceptions[exception] === localStorage.getItem("businessDay")) {
+                valid = false;
+            }
+        }
+        if(valid){
+            property = true;
+        } else {
+            property = false;
+        }
+        return property;
+	}
+	function checkWeekNumber(property) {
+		property = property.split("_");
+		date = new Date(localStorage.getItem("date"));
+        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        let dayCounter = 0;
+        let result = false;
+        while(firstDay.getDate() <= date.getDate()){
+            if(days[firstDay.getDay()] === property[1]){
+                dayCounter=dayCounter+1;
+            }
+            firstDay.setDate(firstDay.getDate()+1);
+        }
+        if(dayCounter === 1 && property[0] === "FIRST" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 2 && property[0] === "SECOND" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 3 && property[0] === "THIRD" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 4 && property[0] === "FOURTH" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        else if(dayCounter === 5 && property[0] === "FIFTH" && property[1] === days[date.getDay()]){
+            result = true;
+        }
+        return result;
+	}
+	function checkToSpan(property){
+        span = property.split("_");
+        span[1] = span[2];
+        span.pop();
+        let count = 0;
+        let firstElement = span[0];
+        let lastElement = span[1];
+        let dayFormat = firstElement.substring(0, firstElement.indexOf("day")) + "day";
+        firstElement = Number(firstElement.split("day").pop().replace("N","-"));
+        lastElement = Number(lastElement.split("day").pop().replace("N","-"));
+        while(firstElement <= lastElement) {
+            span[count] = dayFormat + String(firstElement).replace("-","N");
+            count++;
+            firstElement++;
+        }
+        for (time in span){
+			if(span[time]===localStorage.getItem("businessDay") || span[time]===localStorage.getItem("monthEndDay")){
+				return true;
+			}
+		}
+		return false;
+    }
+	
 </script>
 
 </body>

@@ -59,8 +59,6 @@ function printToScreen(bot, name){
         }
     }
 
-    
-
 
     //add reserved times 
     for (var property in self.RESERVE_DATA) {
@@ -72,7 +70,7 @@ function printToScreen(bot, name){
             bot.reserved.push(self.RESERVE_DATA[property][name][0]);
         }
     }
-   
+
     //print remaining days
     var outputs = [];
     var currentProcess = " ";
@@ -318,5 +316,4 @@ function printToScreen(bot, name){
         }
         return span;
     }
-    
 }

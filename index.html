@@ -69,7 +69,7 @@
         <a href="schedules.html" target="_blank" class="header_link">Todays Bot Schedule: 
         <p class="header_todays_date" id="todaysDate"></p></a>
     </li>
-    <li class="media_small table-cell"><a class="active">v4.0 - (<strong>all times are EST</strong>)</a></li>
+    <li class="media_small table-cell"><a class="active">v4.1 - (<strong>all times are EST</strong>)</a></li>
     <li class="header_all_statuses header_change_date table-cell"><a class='active' style='text-decoration:underline !important;' onclick="bot_status_iframe_login('FALSE')">Check All Statuses</a></li>
     <li class="header table-cell"><a class="active"> 
         <div class="material-icons header_change_date refresh_date media_small" onClick="window.location.reload()">&#xe5d5;</div>
@@ -230,6 +230,7 @@
         self.TURNINGPOINT = 15;
         
         document.getElementById("todaysDate").innerHTML = date;
+        
         // Print bots to screen
         printToScreen(CBIGDCxPBOTZ901, "CBIGDC_PBOTZ901");
         printToScreen(CBIGDCxPBOTZ902, "CBIGDC_PBOTZ902");
@@ -241,12 +242,13 @@
         printToScreen(CBITDCxPBOTZ903, "CBITDC_PBOTZ903");
         printToScreen(CBITDCxPBOTZ904, "CBITDC_PBOTZ904");
         printToScreen(CBITDCxPBOTZ960, "CBITDC_PBOTZ960");
-        //debug help 
-        console.log("Today: " + today)
-        console.log("Day of the week: " + day)
-        console.log("Hour: " + hour)
-        console.log("Business Day: " + businessDay)
-        console.log("Month End Day: " + monthEndDay)
+  
+        localStorage.setItem("date", date);
+        localStorage.setItem("today", today);
+        localStorage.setItem("hour", hour);
+        localStorage.setItem("businessDay", businessDay);
+        localStorage.setItem("monthEndDay", monthEndDay);
+
         isBusinessDay(self.date);
         document.getElementById("biz_day").innerHTML = self.biz_day;
         document.getElementById("day").innerHTML = day;
