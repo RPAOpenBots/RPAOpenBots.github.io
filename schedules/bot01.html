@@ -182,8 +182,10 @@
             }
         }
         if(valid){
-			if(exceptions[0].split("EXCEPT")[0] = "daily" && days[date.getDay()] != "Sunday" && days[date.getDay()] != "Saturday"){
-				   property = true;
+			if(exceptions[0].split("EXCEPT")[0] === "daily" && days[date.getDay()] != "Sunday" && days[date.getDay()] != "Saturday"){
+				property = true;
+			} else {
+				property = false;
 			}
         } else {
             property = false;
