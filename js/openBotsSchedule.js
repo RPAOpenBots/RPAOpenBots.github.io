@@ -66,8 +66,8 @@ self.botSched = function botSched(){
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
         Tuesday:            ["Data Term Rec",2,3,4,5,6,9],
-        MEday1:             ["IC Product Rec",10,11,12,13,22,23],
-        MEday1_to_MEday2:   ["Cash Account Rec",14],
+        MEday1:             ["Cash Account Rec:*14*;IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,14,22,23],
+        MEday2:   			["Cash Account Rec",14],
 		MEday4:             ["Cash Account Rec - Blackline",8],
 		daily:              ["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*",1,7,12,16,21]
     }
