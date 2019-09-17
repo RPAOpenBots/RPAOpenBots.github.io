@@ -27,6 +27,20 @@ function printToScreen(bot, name){
             delete bot[property];
         }
     }
+	
+	//Expand 'and' date spans (i.e. Monday_and_Tuesday)
+    for (var property in bot) {
+        if(property.includes("_and_")){
+            result = checkAndSpan(property);
+            
+            for (time in result){
+                let nameFormat = result[time];
+                bot[nameFormat] = bot[property];
+                
+            }
+            delete bot[property];
+        }
+    }
 
     //remove days other than today 
     for (var property in bot) {
@@ -314,6 +328,11 @@ function printToScreen(bot, name){
             count++;
             firstElement++;
         }
+        return span;
+    }
+	
+	function checkAndSpan(property){
+        span = property.split("_and_");
         return span;
     }
 }

@@ -108,6 +108,7 @@
 			new_property = new_property.split("THIRD").join("3rd");
 			new_property = new_property.split("FOURTH").join("4th");
 			new_property = new_property.split("FIFTH").join("5th");
+			new_property = new_property.split("_and_").join("/");
 			new_property = new_property.split("daily").join("Daily");
 			new_property = new_property.split("EXCEPT").join(" Except ");
 			new_property = new_property.split("MEday").join("Close Day ");
@@ -160,7 +161,9 @@
 		//Translate 'EXCEPT' dates 
 		if(property.includes("EXCEPT")){
 			return checkException(property);
-		} else if (property.includes("FIRST") || property.includes("SECOND") || property.includes("THIRD") || property.includes("FOURTH") || property.includes("FIFTH")) {
+		} else if(property.includes("_and_")){
+            return checkAndSpan(property);
+        } else if (property.includes("FIRST") || property.includes("SECOND") || property.includes("THIRD") || property.includes("FOURTH") || property.includes("FIFTH")) {
 			return checkWeekNumber(property);
 		} else if(property.includes("_to_")){
             return checkToSpan(property);
@@ -241,6 +244,17 @@
 			}
 		}
 		return false;
+    }
+	function checkAndSpan(property){
+		let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		date = new Date(localStorage.getItem("date"));
+        span = property.split("_and_");
+		for (time in span){
+			if(span[time]===localStorage.getItem("businessDay") || span[time]===localStorage.getItem("monthEndDay") || span[time]=== days[date.getDay()] || checkWeekNumber(span[time])){
+				return true;
+			}
+		}
+        return false;
     }
 	
 </script>
