@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 08/15/2019 
+ *  LAST UPDATED: 09/17/2019 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -91,6 +91,8 @@ self.botSched = function botSched(){
 	//CBITDC_PBOTZ904
     self.CBITDCxPBOTZ904 = {
 		Tuesday:            ["Report Assembly",13,14,15,16],
+		Monday:				["Telecom Ariba Upload",14,15],
+		Wednesday:			["Telecom Ariba Upload",14,15],
 		daily:              ["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10]
 	}
 	
