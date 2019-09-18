@@ -84,11 +84,11 @@ self.botSched = function botSched(){
         Tuesday:
 			["Data Term Rec",2,3,4,5,6,9],
         MEday1:
-			["Cash Account Rec:*14*;IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,14,22,23],
+			["IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,22,23],
+		MEday1_and_MEday2: 
+			["Cash Account Rec",14],
 		MEday4:             
 			["Cash Account Rec - Blackline",8],
-        MEday2: 
-			["Cash Account Rec",14],
 		daily:              
 			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*",1,7,12,16,21]
     }
@@ -107,7 +107,6 @@ self.botSched = function botSched(){
     self.CBITDCxPBOTZ903 = {
         SECOND_Friday_and_FOURTH_Friday:      
 			["IT-Proj Cost Calc",12],
-
 		Monday: 
 			["Approved Price Block",9,11,14,16,18],
 		Tuesday_and_Wednesday_and_Thursday_and_Friday:

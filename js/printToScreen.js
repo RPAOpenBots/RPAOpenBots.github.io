@@ -21,7 +21,16 @@ function printToScreen(bot, name){
             
             for (time in result){
                 let nameFormat = result[time];
-                bot[nameFormat] = bot[property];
+				let holdName = bot[property];
+				if(bot[nameFormat] != undefined){
+					bot[property][0] = bot[property][0] + ":";
+					bot[nameFormat][0] = bot[nameFormat][0] + ";" + bot[property].join("*") + "*";
+					bot[property].shift();
+					bot[nameFormat] = bot[nameFormat].concat(bot[property]);
+					bot[property].unshift(holdName);
+				} else {
+					bot[nameFormat] = bot[property];
+				}
                 
             }
             delete bot[property];
@@ -35,7 +44,16 @@ function printToScreen(bot, name){
             
             for (time in result){
                 let nameFormat = result[time];
-                bot[nameFormat] = bot[property];
+				let holdName = bot[property][0];
+				if(bot[nameFormat] != undefined){
+					bot[property][0] = bot[property][0] + ":";
+					bot[nameFormat][0] = bot[nameFormat][0] + ";" + bot[property].join("*") + "*";
+					bot[property].shift();
+					bot[nameFormat] = bot[nameFormat].concat(bot[property]);
+					bot[property].unshift(holdName);
+				} else {
+					bot[nameFormat] = bot[property];
+				}
                 
             }
             delete bot[property];
