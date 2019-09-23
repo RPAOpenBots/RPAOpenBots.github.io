@@ -273,8 +273,18 @@ function printToScreen(bot, name){
                 color = "0px 2px 5px goldenrod; font-family:monospace";
             }
         }
-        document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + outputs[i] + "</center><br>";
+        if(i<9){
+            document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + outputs[i] + "</center><br>";
+        } else {
+            document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + "<span class='hide_time_"+name+"'>" + outputs[i] + "</span>" + "</center><br class='hide_time_"+name+"'>";
+        }
     }
+    let className = document.getElementsByClassName("hide_time_"+name+"");
+    for (var i = 0; i < className.length; i++) {
+        className[i].style.display = "none";
+        document.getElementById(name+"_btnExtend").style.display = "block";
+    }
+    
     if(outputs.length === 0){
         document.getElementById(name+"_body").innerHTML = "<center>" + document.getElementById(name+"_body").innerHTML + "None" + "</center><br>";
     }

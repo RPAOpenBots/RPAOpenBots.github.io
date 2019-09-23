@@ -119,9 +119,10 @@ li a:hover {
 }
 .bot_body {
     /* border-radius: 0px 0px 10px 0px; */
-    padding:15px 5px 5px 5px; 
+    padding:15px 5px 0px 5px; 
     line-height: 20px; 
     border: solid 1px;  
+    border-width: 1px 1px 0px 1px;
     font-size:20px; 
     margin:0px; 
     background-color: white; 
@@ -138,7 +139,7 @@ li a:hover {
     font-family: monospace;
     margin: 1em 0px;
     border: solid 1px black;
-    border-width: 0px 1px 0px 1px; 
+    border-width: 1px 1px 0px 1px; 
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -164,6 +165,16 @@ li a:hover {
     padding-top: 3px;
     padding-bottom: 3px;
 }
+.bot_extend {
+    border: solid 1px black;
+    border-width: 0px 1px 0px 1px; 
+    padding-bottom: 5px;
+    display:none;
+}
+.bot_extend:hover {
+    color: goldenrod;
+    cursor: pointer;
+  }
 .btn {
     /* color:black !important; */
 }
