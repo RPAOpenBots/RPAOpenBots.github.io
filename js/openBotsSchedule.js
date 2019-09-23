@@ -97,8 +97,6 @@ self.botSched = function botSched(){
     self.CBITDCxPBOTZ902 = {
         daily:              
 			["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*",5,8,9,11,12,13,14,15,16,17],
-		Monday:             
-			["SnM Program Balances",3,4],
 		MEdayN2_to_MEday5:  
 			["FPA - Plan Forecast",6,7],
     }
@@ -130,6 +128,8 @@ self.botSched = function botSched(){
 	
 	//CBITDC_PBOTZ960
 	self.CBITDCxPBOTZ960 = {
+		Monday:             
+			["SnM Program Balances",8,9],
 		daily:				
 			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21]
 	}
