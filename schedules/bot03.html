@@ -133,13 +133,13 @@
 				// IF IS RUNNING TODAY
 				if(isTimeToday(property.trim())){
 					if (i===0 || i===1 || i===2 || i===23) {
-						if(Number(localStorage.getItem("hour"))===i){
+						if(Number(new Date().getHours())===i){
 							self.sched += "<td class='stripes'><center>*</center></td>";
 						} else {
 							self.sched += "<td class='color_it_now'><center>*</center></td>";
 						}
 					} else {
-						if(Number(localStorage.getItem("hour"))===i){
+						if(Number(new Date().getHours())===i){
 							self.sched += "<td class='stripes'></td>";
 						} else {
 							self.sched += "<td class='color_it_now'></td>";
