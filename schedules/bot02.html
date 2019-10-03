@@ -38,6 +38,9 @@
 	th:first-child {
 		border-left: 1px solid #85898c;
 	}
+	.stripes{
+		background: repeating-linear-gradient(-45deg, red, red 5px, white 5px, white 10px);
+	}
 </style>
 </head>
 <body>
@@ -129,9 +132,17 @@
 				// IF IS RUNNING TODAY
 				if(isTimeToday(property.trim())){
 					if (i===0 || i===1 || i===2 || i===23) {
-						self.sched += "<td class='color_it_now'><center>*</center></td>";
+						if(Number(localStorage.getItem("hour"))===i){
+							self.sched += "<td class='stripes'><center>*</center></td>";
+						} else {
+							self.sched += "<td class='color_it_now'><center>*</center></td>";
+						}
 					} else {
-						self.sched += "<td class='color_it_now'></td>";
+						if(Number(localStorage.getItem("hour"))===i){
+							self.sched += "<td class='stripes'></td>";
+						} else {
+							self.sched += "<td class='color_it_now'></td>";
+						}
 					}
 				} else {
 					if (i===0 || i===1 || i===2 || i===23) {
