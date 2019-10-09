@@ -148,6 +148,7 @@
             self.date = new Date(datePassedIn);
             date.setDate(date.getDate() + 1)
             self.hideAvailable = true;
+            botBodiesModal();
         } else {
             self.hideAvailable = false;
             self.date = new Date();
@@ -196,28 +197,8 @@
      * MODAL 
     */
     // Get the button that opens the modal
-
-    var bot_bodies = document.querySelectorAll('.' + 'bot_body');
-    var ID = '';
-    for (var i=0 ; i < bot_bodies.length ; i++){
-        (function(index){
-            bot_bodies[index].onclick = function(text){
-                ID = text.currentTarget.id;
-                BOTS.INFO.forEach(element => {
-                    if(ID === (element.name + "_body")){
-                        self.color=element.color;
-                        reserveBotTime(element.non_sched_hours,element.sched,element.name,element.reservations);
-                        self.bot_utilization = element.bot_utilization;
-                        localStorage.setItem('color',element.color);
-                        localStorage.setItem('full_sched',JSON.stringify(element.full_sched));
-                        document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe class='sched' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
-                        document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"; background-color:"+self.color+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"
-                    }
-                });
-        
-            };
-        })(i)
-    }
+    botBodiesModal();
+    
 
     var help = document.getElementById("help");
     var botClicked = "";
@@ -387,6 +368,30 @@
                     text = text.currentTarget.previousSibling.data;
                     ID = text.substring(text.lastIndexOf("(") + 1, text.lastIndexOf(")"));
                     deleteReserveAPI(ID);
+                };
+            })(i)
+        }
+    }
+
+    function botBodiesModal(){
+        var bot_bodies = document.querySelectorAll('.' + 'bot_body');
+        var ID = '';
+        for (var i=0 ; i < bot_bodies.length ; i++){
+            (function(index){
+                bot_bodies[index].onclick = function(text){
+                    ID = text.currentTarget.id;
+                    BOTS.INFO.forEach(element => {
+                        if(ID === (element.name + "_body")){
+                            self.color=element.color;
+                            reserveBotTime(element.non_sched_hours,element.sched,element.name,element.reservations);
+                            self.bot_utilization = element.bot_utilization;
+                            localStorage.setItem('color',element.color);
+                            localStorage.setItem('full_sched',JSON.stringify(element.full_sched));
+                            document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe class='sched' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
+                            document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"; background-color:"+self.color+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"
+                        }
+                    });
+            
                 };
             })(i)
         }
