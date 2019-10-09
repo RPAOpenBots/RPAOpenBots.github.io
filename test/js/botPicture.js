@@ -1,60 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="../js/openBotsSchedule.js"></script>
-<style>
-	.color_it {
-		/* CHANGE THIS COLOR FOR BOT SCHEDULE */
-		background: repeating-linear-gradient(-45deg, #E0DA83, #E0DA83 5px, white 5px, white 10px);	
-		opacity: .5;
-	}
-	.color_it_now {
-		background-color: #E0DA83;
-	}
-	#bot {
-		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-		height: 100%
-	}
-	#bot td {
-		border: 1px solid #8f8f8f;
-		padding: 3px;
-		font-size: 14px;
-	}
-	#bot tr:nth-child(even){background-color: #f2f2f2;}
-	#bot th {
-		background-color: #85898c;
-		color: white;
-	}
-	body{
-		height:100%;
-	}
-	th {
-		position: sticky;
-		top: 0;
-	}
-	th:last-child {
-		border-right: 1px solid #85898c;
-	}
-	th:first-child {
-		border-left: 1px solid #85898c;
-	}
-	.stripes{
-		background-color: yellow;
-	}
-</style>
-</head>
-<body>
-<div id="schedule"></div>
 
-<script>
-	
-	let self = this;
-	self.botSched();
+self.botPicture = function botPicture(sched){
+
+
 	// **FOR NEW BOT**
 	// CHANGE LINE BELOW FOR NEW BOT
-	let BOT = CBIGDCxPBOTZ901;
+	let BOT = sched;
 	
 	self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
 	for (property in BOT){
@@ -167,7 +117,7 @@
 		self.sched += "</tr>"
 	}
 	self.sched += "</table>"
-	document.getElementById('schedule').innerHTML = self.sched;
+	return self.sched;
 
 	function isTimeToday(property){
 		let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -270,8 +220,4 @@
 		}
         return false;
     }
-	
-</script>
-
-</body>
-</html>
+}
