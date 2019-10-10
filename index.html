@@ -434,7 +434,7 @@
             }
         });
         self.gdc_count_tracker = gdc_count_tracker_min;
-        if(count<gdc_count_tracker_max){
+        if(count<=gdc_count_tracker_max){
             document.getElementById("gdc_btn_next").style.display = "none";
             document.getElementById("gdc_btn_reset").style.display = "inline";
         }
@@ -457,7 +457,7 @@
             }
         });
         self.tdc_count_tracker = tdc_count_tracker_min;
-        if(count>tdc_count_tracker_max){
+        if(count>=tdc_count_tracker_max){
             document.getElementById("tdc_btn_next").style.display = "none";
             document.getElementById("tdc_btn_reset").style.display = "inline";
         }
