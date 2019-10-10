@@ -107,15 +107,21 @@
         // RESET
         document.getElementById("GDC_BOTS").innerHTML = "";
         document.getElementById("TDC_BOTS").innerHTML = "";
+        let gdc_count = 0;
+        let tdc_count = 0;
+        self.gdc_count_tracker = 5;
+        self.tdc_count_tracker = -5;
+
 
         // LOOP BOTS
         BOTS.INFO.forEach(element => {
             let displayMoreTimes = "displayMoreTimes('hide_time_"+element.name+"','"+element.name+"_btnExtend')";
             let bot_status_iframe_login = 'bot_status_iframe_login("http://'+element.name.replace("_","-")+'.cbi.net:8181/user%20name%20username@CWC.cbi.net&password%20pwd&status")';
-            
+
             if(element.name.includes("GDC")){
+                gdc_count++;
                 document.getElementById("GDC_BOTS").innerHTML += 
-                "<div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
+                "<span id="+gdc_count+"><div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
                     <p title="+element.name+" id="+element.name+"_title" +" class='bot_title' style='background-color:"+element.color+"'></p> \
                     <p id="+element.name+ "_body" + " class='bot_body' title='open...'></p> \
                     <div title='expand...' id="+element.name+ "_btnExtend" + " class='bot_extend' onclick="+displayMoreTimes+"><i class='material-icons'>&#xe5d3;</i></div> \
@@ -123,10 +129,14 @@
                     <p id="+element.name+"_available"+" class='bot_available'></p> \
                     <p id="+element.name+"_dupe"+" class='bot_dupe'></p> \
                     <button class='btn btn-link btn-xs' onclick="+bot_status_iframe_login+">Current Status</button> \
-                </div>"
+                </div></span>"
+                if(gdc_count > 5){
+                    document.getElementById(gdc_count).style.display = "none";
+                }
             } else {
+                tdc_count--;
                 document.getElementById("TDC_BOTS").innerHTML += 
-                "<div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
+                "<span id="+tdc_count+"><div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
                     <p title="+element.name+" id="+element.name+"_title" +" class='bot_title' style='background-color:"+element.color+"'></p> \
                     <p id="+element.name+ "_body" + " class='bot_body' title='open...'></p> \
                     <div title='expand...' id="+element.name+ "_btnExtend" + " class='bot_extend' onclick="+displayMoreTimes+"><i class='material-icons'>&#xe5d3;</i></div> \
@@ -134,10 +144,20 @@
                     <p id="+element.name+"_available"+" class='bot_available'></p> \
                     <p id="+element.name+"_dupe"+" class='bot_dupe'></p> \
                     <button class='btn btn-link btn-xs' onclick="+bot_status_iframe_login+">Current Status</button> \
-                </div>"
+                </div></span>"
+                if(tdc_count < -5){
+                    document.getElementById(tdc_count).style.display = "none";
+                }
             }
         });
-
+        if(gdc_count > 5){
+            document.getElementById("GDC_BOTS").innerHTML += "<button title='More' class='btn btn-primary' id='gdc_btn_next' onclick='displayNextGDCBots()'><i class='material-icons'>&#xe5c8;</i></button>"
+            document.getElementById("GDC_BOTS").innerHTML += "<button title='Reset 'style='display:none;' class='btn btn-primary' id='gdc_btn_reset' onclick='resetBotCountersGDC()'><i class='material-icons'>&#xe5d5</i></button>"
+        }
+        if(tdc_count < -5){
+            document.getElementById("TDC_BOTS").innerHTML += "<button title='More' class='btn btn-primary' id='tdc_btn_next' onclick='displayNextTDCBots()'><i class='material-icons'>&#xe5c8;</i></button>"
+            document.getElementById("TDC_BOTS").innerHTML += "<button title='Reset 'style='display:none;' class='btn btn-primary' id='tdc_btn_reset' onclick='resetBotCountersTDC()'><i class='material-icons'>&#xe5d5</i></button>"
+        }
 
         for (var property in BOTS.INFO) {
             document.getElementById(BOTS.INFO[property].name+"_body").innerHTML = "";
@@ -395,6 +415,68 @@
                 };
             })(i)
         }
+    }
+
+    function displayNextGDCBots(){
+        let count = 0;
+        let gdc_count_tracker_min = self.gdc_count_tracker + 1;
+        let gdc_count_tracker_max = self.gdc_count_tracker + 5;
+        BOTS.INFO.forEach(element => {
+            if(element.name.includes("GDC")){
+                count++;
+                if(count <= self.gdc_count_tracker){
+                    document.getElementById(count).style.display = "none";
+                } else if (count >= gdc_count_tracker_min && count <= gdc_count_tracker_max){
+                    document.getElementById(count).style.display = "inline";
+                } else {
+                    document.getElementById(count).style.display = "none";
+                }
+            }
+        });
+        self.gdc_count_tracker = gdc_count_tracker_min;
+        if(count<gdc_count_tracker_max){
+            document.getElementById("gdc_btn_next").style.display = "none";
+            document.getElementById("gdc_btn_reset").style.display = "inline";
+        }
+    }
+
+    function displayNextTDCBots(){
+        let count = 0;
+        let tdc_count_tracker_min = self.tdc_count_tracker - 1;
+        let tdc_count_tracker_max = self.tdc_count_tracker - 5;
+        BOTS.INFO.forEach(element => {
+            if(element.name.includes("TDC")){
+                count--;
+                if(count >= self.tdc_count_tracker){
+                    document.getElementById(count).style.display = "none";
+                } else if (count <= tdc_count_tracker_min && count >= tdc_count_tracker_max){
+                    document.getElementById(count).style.display = "inline";
+                } else {
+                    document.getElementById(count).style.display = "none";
+                }
+            }
+        });
+        self.tdc_count_tracker = tdc_count_tracker_min;
+        if(count>tdc_count_tracker_max){
+            document.getElementById("tdc_btn_next").style.display = "none";
+            document.getElementById("tdc_btn_reset").style.display = "inline";
+        }
+    }
+
+    function resetBotCountersGDC(){
+        self.gdc_count_tracker = 0;
+        displayNextGDCBots();
+        document.getElementById("gdc_btn_next").style.display = "inline";
+        document.getElementById("gdc_btn_reset").style.display = "none";
+        self.gdc_count_tracker = 5;
+    }
+
+    function resetBotCountersTDC(){
+        self.tdc_count_tracker = 0;
+        displayNextTDCBots();
+        document.getElementById("tdc_btn_next").style.display = "inline";
+        document.getElementById("tdc_btn_reset").style.display = "none";
+        self.tdc_count_tracker = -5;
     }
     
     function sendReserveAPI(reservedTimes,bot_name,reserve_name,reserve_process){

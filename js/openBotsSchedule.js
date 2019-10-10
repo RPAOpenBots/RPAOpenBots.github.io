@@ -78,7 +78,7 @@ self.botSched = function botSched(){
 	//CBIGDC_PBOTZ960
 	self.CBIGDCxPBOTZ960 = {
 	}
-
+	
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
         Tuesday:
