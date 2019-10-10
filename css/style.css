@@ -174,7 +174,10 @@ li a:hover {
 .bot_extend:hover {
     color: goldenrod;
     cursor: pointer;
-  }
+}
+.bots_server_title{
+    padding-right: 60px;
+}
 .btn {
     /* color:black !important; */
 }

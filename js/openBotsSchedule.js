@@ -77,6 +77,9 @@ self.botSched = function botSched(){
 
 	//CBIGDC_PBOTZ960
 	self.CBIGDCxPBOTZ960 = {}
+
+	//New_GDC_BOT
+	self.New_GDC_BOT = {}
 	
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
@@ -133,7 +136,10 @@ self.botSched = function botSched(){
 			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21],
 		daily:				
 			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21]
-	}
+	},
+
+	//New_TDC_BOT
+	self.New_TDC_BOT = {}
 
 
 	// LIST OF BOTS - ADD HERE TO ADD A NEW BOT
@@ -144,11 +150,13 @@ self.botSched = function botSched(){
 			{name:"CBIGDC_PBOTZ903", sched: self.CBIGDCxPBOTZ903, color: "#79b8e5"},
 			{name:"CBIGDC_PBOTZ904", sched: self.CBIGDCxPBOTZ904, color: "#eda84f"},
 			{name:"CBIGDC_PBOTZ960", sched: self.CBIGDCxPBOTZ960, color: "#04d491"},
+			{name:"New_GDC_BOT", sched: self.New_GDC_BOT, color: "#f15454"},
 			{name:"CBITDC_PBOTZ901", sched: self.CBITDCxPBOTZ901, color: "#8fc568"},
 			{name:"CBITDC_PBOTZ902", sched: self.CBITDCxPBOTZ902, color: "#6e7275"},
 			{name:"CBITDC_PBOTZ903", sched: self.CBITDCxPBOTZ903, color: "#b8c0c5"},
 			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#2eaba7"},
-			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"}
+			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"},
+			{name:"New_TDC_BOT", sched: self.New_TDC_BOT, color: "#95b1f1"}
 		]
 	}
 }
