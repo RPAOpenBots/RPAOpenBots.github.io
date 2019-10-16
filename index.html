@@ -360,20 +360,26 @@
                 buttons[index].onclick = function(){
                     var reserve_name = document.getElementById('reserve_name').value;
                     var reserve_process = document.getElementById('reserve_process').value;
-                    if(reserve_process != "" && reserve_name != ""){
-                        document.getElementById('reserve_bot_time').innerHTML = "reserving please wait..."
-                        if(self.non_sched_hours===undefined){
-                            self.non_sched_hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-                        }
-                        if(self.bot.reserved===undefined){
-                            self.bot.reserved = [self.non_sched_hours[index]];
+                    let combine_string_info = reserve_process + reserve_name;
+                    if(!combine_string_info.includes("-") && !combine_string_info.includes("(")){
+                        if(reserve_process != "" && reserve_name != ""){
+                            document.getElementById('reserve_bot_time').innerHTML = "reserving please wait..."
+                            if(self.non_sched_hours===undefined){
+                                self.non_sched_hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+                            }
+                            if(self.bot.reserved===undefined){
+                                self.bot.reserved = [self.non_sched_hours[index]];
+                            } else {
+                                self.bot.reserved.push(self.non_sched_hours[index]);
+                            }
+                            self.bot.reserved = [self.bot.reserved.slice(-1).pop()];
+                            for(var time in self.bot.reserved){self.bot.reserved[time] = Number(moment(self.bot.reserved[time],"h:mm A").format("H"));}
+                            sendReserveAPI(self.bot.reserved, self.bot_name, reserve_name, reserve_process);
                         } else {
-                            self.bot.reserved.push(self.non_sched_hours[index]);
+                            document.getElementById('missing_info_error').innerHTML = "*Enter your name and process name";
                         }
-                        for(var time in self.bot.reserved){self.bot.reserved[time] = Number(moment(self.bot.reserved[time],"h:mm A").format("H"));}
-                        sendReserveAPI(self.bot.reserved, self.bot_name, reserve_name, reserve_process);
                     } else {
-                        document.getElementById('missing_info_error').innerHTML = "*Enter your name and process name";
+                        document.getElementById('missing_info_error').innerHTML = "*Unable to use '-' or '(' in the user name or process name";
                     }
                 };
             })(i)
@@ -406,6 +412,21 @@
                             reserveBotTime(element.non_sched_hours,element.sched,element.name,element.reservations);
                             self.bot_utilization = element.bot_utilization;
                             localStorage.setItem('color',element.color);
+                            let timeSlot = [];
+                            let reservedName = "";
+                            element.reservations.forEach(reserv => {
+                                let split = reserv.split("-");
+                                split[0] = split[0].trim();
+                                split[1] = split[1].trim();
+                                split[2] = Number(moment((split[2].split("("))[0].trim(),"h:mm A").format("H"));
+                                reservedName = reservedName + split[0]+"/"+split[1]+":*"+split[2]+"*;";
+                                timeSlot[0] = reservedName;
+                                timeSlot.push(split[2]);
+                            });
+                            if(timeSlot[0] !== undefined){
+                                timeSlot[0] = timeSlot[0].substring(0, timeSlot[0].length - 1);
+                                element.full_sched.Reserved = timeSlot;
+                            }
                             localStorage.setItem('full_sched',JSON.stringify(element.full_sched));
                             document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe class='sched' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
                             document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"; background-color:"+self.color+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"
