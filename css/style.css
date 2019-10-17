@@ -427,11 +427,14 @@ iframe {
         margin-right: 0 !important;
         margin-top: 50px;
     }
+    .sched {
+        border: 1px solid;
+    }
     .est_time_info {
         margin-top:10%;
     }
     #gdc_btn_next, #tdc_btn_next, #gdc_btn_reset, #tdc_btn_reset  {
-        display: block;
+        display: block !important;
         float: none;
         margin-top: 10px;
     }
