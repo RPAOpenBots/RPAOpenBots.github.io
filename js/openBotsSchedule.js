@@ -125,7 +125,9 @@ self.botSched = function botSched(){
 		Monday_and_Wednesday:				
 			["Telecom Ariba Upload",14,15],
 		daily:              
-			["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10]
+			["Balance Sheet Hedging:*5*6*;Daily S&D:*8*9*10*",5,6,8,9,10],
+		MEday5:
+			["FPA - TE Report",11,12]
 	}
 	
 	//CBITDC_PBOTZ960
