@@ -159,7 +159,7 @@ self.botSched = function botSched(){
 			{name:"CBIGDC_PBOTZ904", sched: self.CBIGDCxPBOTZ904, color: "#eda84f"},
 			{name:"CBIGDC_PBOTZ960", sched: self.CBIGDCxPBOTZ960, color: "#04d491"},
 			{name:"CBIGDC_PBOTZ961", sched: self.CBIGDCxPBOTZ961, color: "#f15454"},
-			{name:"CBIGDC_PBOTZ962", sched: self.CBIGDCxPBOTZ961, color: "#f15459"},
+			{name:"CBIGDC_PBOTZ962", sched: self.CBIGDCxPBOTZ961, color: "#a796b0"},
 			//TDC
 			{name:"CBITDC_PBOTZ901", sched: self.CBITDCxPBOTZ901, color: "#8fc568"},
 			{name:"CBITDC_PBOTZ902", sched: self.CBITDCxPBOTZ902, color: "#6e7275"},
@@ -167,7 +167,7 @@ self.botSched = function botSched(){
 			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#2eaba7"},
 			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"},
 			{name:"CBITDC_PBOTZ961", sched: self.CBITDCxPBOTZ961, color: "#95b1f1"},
-			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#95b1f9"}
+			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#8a8c81"}
 		]
 	}
 }
