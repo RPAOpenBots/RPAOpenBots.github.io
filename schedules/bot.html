@@ -40,6 +40,10 @@
 	.stripes{
 		background-color: yellow;
 	}
+	.clickable:hover{
+		cursor: pointer;
+		background-color: lightblue;
+	}
 </style>
 </head>
 <body>
@@ -155,9 +159,9 @@
 			// NOT IN SCHEDULE
 			} else {
 				if (i===0 || i===1 || i===2 || i===23) {
-					self.sched += "<td><center>*</center></td>";
+					self.sched += "<td class='clickable'><center>*</center></td>";
 				} else {
-					self.sched += "<td></td>";
+					self.sched += "<td class='clickable'></td>";
 				}
 			}
 		}	
