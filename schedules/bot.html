@@ -42,7 +42,15 @@
 	}
 	.clickable:hover{
 		cursor: pointer;
-		background-color: lightblue;
+		background-color: lightblue !important;
+	}
+	.clickable:active:after{
+		content:attr(title);
+		padding:5px;
+		border:1px solid #ccc;
+		margin-left: 2%;
+		background: white;
+		position: absolute;
 	}
 </style>
 </head>
@@ -56,7 +64,7 @@
 	// CHANGE LINE BELOW FOR NEW BOT
 	let BOT = JSON.parse(localStorage.getItem("full_sched"));
 	let color = localStorage.getItem("color");
-	
+
 	self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
 	for (property in BOT){
 		let splitProcesses = "";
@@ -137,15 +145,15 @@
 				if(isTimeToday(property.trim())){
 					if (i===0 || i===1 || i===2 || i===23) {
 						if(Number(new Date().getHours())===i){
-							self.sched += "<td class='stripes'><center>*</center></td>";
+							self.sched += "<td title='"+BOT[property][0]+"' class='clickable stripes'><center>*</center></td>";
 						} else {
-							self.sched += "<td style='background-color: "+color+"' class='color_it_now'><center>*</center></td>";
+							self.sched += "<td title='"+BOT[property][0]+"' style='background-color: "+color+"' class='clickable color_it_now'><center>*</center></td>";
 						}
 					} else {
 						if(Number(new Date().getHours())===i){
-							self.sched += "<td class='stripes'></td>";
+							self.sched += "<td title='"+BOT[property][0]+"' class='clickable stripes'></td>";
 						} else {
-							self.sched += "<td style='background-color: "+color+"' class='color_it_now'></td>";
+							self.sched += "<td title='"+BOT[property][0]+"' style='background-color: "+color+"' class='clickable color_it_now'></td>";
 						}
 					}
 				} else {
@@ -159,9 +167,9 @@
 			// NOT IN SCHEDULE
 			} else {
 				if (i===0 || i===1 || i===2 || i===23) {
-					self.sched += "<td class='clickable'><center>*</center></td>";
+					self.sched += "<td><center>*</center></td>";
 				} else {
-					self.sched += "<td class='clickable'></td>";
+					self.sched += "<td></td>";
 				}
 			}
 		}	
