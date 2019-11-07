@@ -33,7 +33,7 @@
         <p class="time_slot_container">Reserve a time slot:</p>
         <div class="reserve_info">
             <input type="text" placeholder="your name" id="reserve_name" onfocus="this.value=''"></input>
-            <input type="text" placeholder="process" id="reserve_process" onfocus="this.value=''"></input>
+            <input type="text" placeholder="process" id="reserve_process" onfocus="this.value=''">
             <p id="missing_info_error" style="color:red; font-weight:initial;"></p>
         </div>
         <div id="reserve_bot_time"> Reserve Bot Time </div>
@@ -68,13 +68,13 @@
     <li id="main"><div title="More Info" class="openbtn" onclick="openNav()"> <i class="material-icons">&#xe03c;</i></div></li>
     <li class="media_small table-cell" title"Process Insights">
         <a >All times are <strong style='text-decoration: underline;'>EST</strong>: 
-        <p class="header_todays_date" id="todaysDate"></p></a>
+        <p class="header_todays_date" id="todaysDate"></p> - v4.2</a>
     </li>
-    <li class="media_small table-cell"><a class="active header_link" style='text-decoration:underline !important;' href="insights.html" target="_blank" >v4.2 - Bot Insights</a></li>
-    <li class="header_all_statuses header_change_date table-cell"><a class='active header_link' style='text-decoration:underline !important;' onclick="bot_status_iframe_login('FALSE')">Check Bot Statuses</a></li>
+    <li class="media_small table-cell"><a class="active header_link" href="insights.html" target="_blank" >Bot Insights<i class="material-icons">&#xe85c;</i></a></li>
+    <li class="header_all_statuses header_change_date table-cell"><a class='active header_link' onclick="bot_status_iframe_login('FALSE')">Check Bot Statuses<i class="material-icons">&#xe8e1;</i></a></li>
     <li class="header table-cell"><a class="active"> 
         <div class="material-icons header_change_date refresh_date media_small" onClick="window.location.reload()">&#xe5d5;</div>
-        <div class="change_date_title">Change Date:</div>
+        <div class="change_date_title">Change Date:</div>  
         <input type="date" id="dateInput" class="header_date_selector">
         <div type="submit" onclick="init(document.getElementById('dateInput').value)" class="material-icons header_change_date">&#xe8b6;</div></a>
     </li>
