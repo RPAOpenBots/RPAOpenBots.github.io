@@ -422,15 +422,18 @@ iframe {
       margin-left: 10px;
   }
 @media (max-width : 1200px) {
-    .media_small {
+    .media_small,.progress,.bot_ut_info,.reserve_time_wrapper,.current_status {
 		display:none !important;
-	}
+    }
 	.bot_container {
 		width: 80% !important; 
         margin-right: 0 !important;
         margin-top: 50px;
     }
-    
+ 
+    .bot_dupe{
+        border-bottom:1px solid black;
+    }
     .est_time_info {
         margin-top:10%;
     }
