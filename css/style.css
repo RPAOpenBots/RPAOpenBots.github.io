@@ -192,9 +192,7 @@ iframe {
     width:100%;
     border: none;
 }
-.sched {
-    /* height:30vh; */
-}
+
 #schedule {
     font-family: monospace;
     letter-spacing: 3px;
