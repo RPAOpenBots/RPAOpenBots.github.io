@@ -437,7 +437,7 @@
                                 element.full_sched.Reserved = timeSlot;
                             }
                             localStorage.setItem('full_sched',JSON.stringify(element.full_sched));
-                            document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe class='sched' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
+                            document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe onload='resizeIframe(this);' scroling='auto' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
                             document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"; background-color:"+self.color+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"
                         }
                     });
@@ -445,6 +445,10 @@
                 };
             })(i)
         }
+    }
+
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
     }
 
     function displayNextGDCBots(){
