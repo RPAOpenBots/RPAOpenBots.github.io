@@ -284,7 +284,7 @@
         if(self.src != 'FALSE'){
             self.src = self.src.replace("username",self.uname)
             self.src = self.src.replace("pwd",self.pword)
-            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe onload='resizeIframe(this);' src='"+src+"'></iframe>"; 
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe src='"+src+"' style='height:400px'></iframe>"; 
         } else {
             document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr>"; 
             BOTS.INFO.forEach(element => {   
