@@ -284,7 +284,7 @@
         if(self.src != 'FALSE'){
             self.src = self.src.replace("username",self.uname)
             self.src = self.src.replace("pwd",self.pword)
-            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe src='"+src+"' style='height:600px'></iframe>"; 
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe onload='resizeIframe(this);' src='"+src+"'></iframe>"; 
         } else {
             document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr>"; 
             BOTS.INFO.forEach(element => {   
@@ -437,7 +437,7 @@
                                 element.full_sched.Reserved = timeSlot;
                             }
                             localStorage.setItem('full_sched',JSON.stringify(element.full_sched));
-                            document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe onload='resizeIframe(this);' scroling='auto' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
+                            document.getElementById('schedule').innerHTML = "<a style='font-weight: initial;' target='_blank' href='schedules/bot.html'>(Open Schedule)</a>"; modal.style.display = "block"; document.getElementById('bot_picture').innerHTML = "<iframe onload='resizeIframe(this);' scrolling='auto' src='schedules/bot.html'></iframe><div class='running_today_title'>Running Today:</div><span class='running_today_text'>"+element.runningToday+"</span>";
                             document.getElementById('bot_utilized_percent').innerHTML = "<div class='progress-bar progress-bar-striped' role='progressbar' style='width:"+self.bot_utilization+"; background-color:"+self.color+"'>Bot is <strong>" + self.bot_utilization + "</strong> Utilized</div>"
                         }
                     });
