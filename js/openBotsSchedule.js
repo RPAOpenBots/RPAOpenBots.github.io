@@ -84,7 +84,7 @@ self.botSched = function botSched(){
 	//CBIGDCxPBOTZ962
 	self.CBIGDCxPBOTZ962 = {
 		daily:
-			["S4 - Glass Pro Forma:*0*;S4 - Lot Clearing:*1*",0,1]
+			["S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,22,23]
 	}
 	
     //CBITDC_PBOTZ901
