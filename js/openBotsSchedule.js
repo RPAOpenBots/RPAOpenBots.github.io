@@ -82,7 +82,10 @@ self.botSched = function botSched(){
 	self.CBIGDCxPBOTZ961 = {}
 	
 	//CBIGDCxPBOTZ962
-	self.CBIGDCxPBOTZ962 = {}
+	self.CBIGDCxPBOTZ962 = {
+		daily:
+			["S4 - Glass Pro Forma:*0*;S4 - Lot Clearing:*1*",0,1]
+	}
 	
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
