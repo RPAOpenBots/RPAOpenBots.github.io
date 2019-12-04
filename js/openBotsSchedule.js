@@ -25,12 +25,12 @@ self.botSched = function botSched(){
 
     //CBIGDC_PBOTZ901
     self.CBIGDCxPBOTZ901 = {
-        dailyEXCEPT_MEday2_MEday3_MEday4_MEday5:
+        dailyEXCEPT_MEday3_MEday4_MEday5:
 			["Manual JE",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Sunday:             						
-			["Manual JE",14,15,16,17,18,19,20,21,22,23],
-        MEday2:             						
-			["Manual JE",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+		Saturday:             						
+			["Manual JE",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+        Sunday:             						
+			["Manual JE",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     }
 
     //CBIGDC_PBOTZ902
@@ -93,10 +93,6 @@ self.botSched = function botSched(){
 			["Data Term Rec",2,3,4,5,6,9],
         MEday1:
 			["IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,22,23],
-		MEday1_and_MEday2: 
-			["Cash Account Rec",14],
-		MEday4:             
-			["Cash Account Rec - Blackline",8],
 		daily:              
 			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*",1,7,12,16,21]
     }
