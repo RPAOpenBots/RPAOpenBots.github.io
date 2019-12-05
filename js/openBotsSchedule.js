@@ -67,10 +67,6 @@ self.botSched = function botSched(){
 			["IT - AD Reconciliation",12],
         MEday1:
 			["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
-		MEday2:
-			["VAT Setup",23],
-		MEday3:
-			["VAT Main Job:*14*15*16*17*18*19*20*;IC Ops:*1*2*",1,2,14,15,16,17,18,19,20],
 		daily:
 			["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13]
 	}
