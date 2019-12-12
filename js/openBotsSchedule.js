@@ -75,7 +75,12 @@ self.botSched = function botSched(){
 	self.CBIGDCxPBOTZ960 = {}
 
 	//CBIGDCxPBOTZ961
-	self.CBIGDCxPBOTZ961 = {}
+	self.CBIGDCxPBOTZ961 = {
+		daily:
+			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+	}
 	
 	//CBIGDCxPBOTZ962
 	self.CBIGDCxPBOTZ962 = {
