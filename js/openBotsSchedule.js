@@ -72,7 +72,8 @@ self.botSched = function botSched(){
 	}
 
 	//CBIGDC_PBOTZ960
-	self.CBIGDCxPBOTZ960 = {}
+	self.CBIGDCxPBOTZ960 = {
+	}
 
 	//CBIGDCxPBOTZ961
 	self.CBIGDCxPBOTZ961 = {
@@ -85,7 +86,9 @@ self.botSched = function botSched(){
 	//CBIGDCxPBOTZ962
 	self.CBIGDCxPBOTZ962 = {
 		daily:
-			["S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,22,23]
+			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
     //CBITDC_PBOTZ901
@@ -128,7 +131,7 @@ self.botSched = function botSched(){
 		Monday_and_Wednesday:				
 			["Telecom Ariba Upload",14,15],
 		daily:              
-			["Daily S&D",8,9,10],
+			["Daily S&D:*8*9*10*;S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,8,9,10,22,23],
 		MEday5:
 			["FPA - TE Report",11,12]
 	}
