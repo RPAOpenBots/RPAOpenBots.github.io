@@ -78,17 +78,17 @@ self.botSched = function botSched(){
 	//CBIGDCxPBOTZ961
 	self.CBIGDCxPBOTZ961 = {
 		daily:
-			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
 		Saturday_and_Sunday:
-			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBIGDCxPBOTZ962
 	self.CBIGDCxPBOTZ962 = {
 		daily:
-			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
 		Saturday_and_Sunday:
-			["MJE/TMS - Beer Loads Overflow",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
     //CBITDC_PBOTZ901
@@ -180,7 +180,7 @@ self.botSched = function botSched(){
 			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#2eaba7"},
 			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"},
 			{name:"CBITDC_PBOTZ961", sched: self.CBITDCxPBOTZ961, color: "#95b1f1"},
-			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#8a8c81"}
+			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#afbaad"}
 		]
 	}
 }
