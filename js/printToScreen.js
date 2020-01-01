@@ -253,6 +253,9 @@ function printToScreen(bot, name, bot_reference){
                 dayCounter=dayCounter+1;
             }
             firstDay.setDate(firstDay.getDate()+1);
+            if(date.getMonth() !== firstDay.getMonth()){
+                break;
+            }
         }
         if(dayCounter === 1 && property[0] === "FIRST" && property[1] === days[date.getDay()]){
             result = true;
