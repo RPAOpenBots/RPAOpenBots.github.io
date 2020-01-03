@@ -188,7 +188,7 @@ li a:hover {
     font-family: monospace;
 }
 iframe {
-    height:40px;
+    height:100%;
     width:100%;
     border: none;
 }
