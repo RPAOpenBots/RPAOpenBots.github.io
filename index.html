@@ -61,7 +61,10 @@
    </div>
 </div>
 
-
+<div class="sidebar" id="mySidebar_insight">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav_insight()">×</a>
+    <iframe onload='resizeIframe(this);' width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiYTJmYmY1M2UtNmJkOC00YWQ1LTgyZjMtMTYxOTY5ZWU2MjY4IiwidCI6Ijg5N2M1MTQ2LWFiMGUtNDBlNS05MmNkLTE1NDkwODE0MmVmYyIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+</div>
 
 <!-- The Header #HTML-->
 <ul class="nav_bar">
@@ -70,7 +73,9 @@
         <a >All times are <strong style='text-decoration: underline;'>EST</strong>: 
         <p class="header_todays_date" id="todaysDate"></p> - v4.2</a>
     </li>
-    <li class="header_all_statuses header_change_date table-cell"><a class="active header_link" href="insights.html" target="_blank" >Bot Insights<i class="material-icons">&#xe85c;</i></a></li>
+    <li onclick="openNav_insight()" class="header_all_statuses header_change_date table-cell" >
+            <a class="active header_link">Bot Insights<i class="material-icons">&#xe85c;</i></a>
+    </li>
     <li class="header_all_statuses header_change_date table-cell media_small table-cell"><a class='active header_link' onclick="bot_status_iframe_login('FALSE')">Check Bot Statuses<i class="material-icons">&#xe8e1;</i></a></li>
     <li class="header table-cell"><a class="active"> 
         <div class="material-icons header_change_date refresh_date media_small" onClick="window.location.reload()">&#xe5d5;</div>
@@ -315,6 +320,18 @@
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("mySidebar").style.borderRight = "1px solid black";
+        document.getElementById("main").style.marginLeft= "0";
+        document.getElementById("main").style.display = "block";
+    }
+    function openNav_insight() {
+        document.getElementById("mySidebar_insight").style.width = "100%";
+        document.getElementById("mySidebar_insight").style.height = "100%";
+        document.getElementById("main").style.display = "none";
+        document.getElementById("mySidebar_insight").style.borderRight = "1px solid goldenrod";
+    }
+    function closeNav_insight() {
+        document.getElementById("mySidebar_insight").style.width = "0";
+        document.getElementById("mySidebar_insight").style.borderRight = "1px solid black";
         document.getElementById("main").style.marginLeft= "0";
         document.getElementById("main").style.display = "block";
     }
