@@ -65,6 +65,8 @@ self.botSched = function botSched(){
 			["IT - AD Reconciliation",12],
         MEday1:
 			["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
+		MEday3:
+			["S4 - VAT",14,15,16,17],
 		daily:
 			["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13]
 	}
@@ -132,8 +134,6 @@ self.botSched = function botSched(){
 			["Daily S&D:*8*9*10*;S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,8,9,10,22,23],
 		Saturday_and_Sunday:              
 			["S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,22,23],
-		MEday3:
-			["S4 - VAT",14,15,16,17],
 		MEday5:
 			["FPA - TE Report",11,12,13,14,15,16]
 	}
