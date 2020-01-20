@@ -93,6 +93,14 @@ self.botSched = function botSched(){
 			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
+	//CBIGDCxPBOTZ963
+	self.CBIGDCxPBOTZ963 = {
+	}
+	
+	//CBIGDCxPBOTZ964
+	self.CBIGDCxPBOTZ964 = {
+	}
+	
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
         Tuesday:
@@ -165,6 +173,13 @@ self.botSched = function botSched(){
 			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 
+	//CBITDCxPBOTZ963
+	self.CBITDCxPBOTZ963 = {
+	}
+	
+	//CBITDCxPBOTZ964
+	self.CBITDCxPBOTZ964 = {
+	}
 
 	// LIST OF BOTS - ADD HERE TO ADD A NEW BOT
 	self.BOTS = {
@@ -177,6 +192,8 @@ self.botSched = function botSched(){
 			{name:"CBIGDC_PBOTZ960", sched: self.CBIGDCxPBOTZ960, color: "#04d491"},
 			{name:"CBIGDC_PBOTZ961", sched: self.CBIGDCxPBOTZ961, color: "#f15454"},
 			{name:"CBIGDC_PBOTZ962", sched: self.CBIGDCxPBOTZ962, color: "#a796b0"},
+			{name:"CBIGDC_PBOTZ963", sched: self.CBIGDCxPBOTZ963, color: "#1BB641"},
+			{name:"CBIGDC_PBOTZ964", sched: self.CBIGDCxPBOTZ964, color: "#5781E8"},
 			//TDC
 			{name:"CBITDC_PBOTZ901", sched: self.CBITDCxPBOTZ901, color: "#8fc568"},
 			{name:"CBITDC_PBOTZ902", sched: self.CBITDCxPBOTZ902, color: "#6e7275"},
@@ -184,7 +201,9 @@ self.botSched = function botSched(){
 			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#2eaba7"},
 			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"},
 			{name:"CBITDC_PBOTZ961", sched: self.CBITDCxPBOTZ961, color: "#95b1f1"},
-			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#afbaad"}
+			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#afbaad"},
+			{name:"CBITDC_PBOTZ963", sched: self.CBITDCxPBOTZ963, color: "#E9C47F"},
+			{name:"CBITDC_PBOTZ964", sched: self.CBITDCxPBOTZ964, color: "#CB57E8"}
 		]
 	}
 }
