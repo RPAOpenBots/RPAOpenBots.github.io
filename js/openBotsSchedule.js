@@ -151,7 +151,7 @@ self.botSched = function botSched(){
 		Monday_and_Wednesday:				
 			["Telecom Ariba Upload",14,15],
 		daily:              
-			["Daily S&D:*8*9*10*;S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*;BSH:*5*6*",5,6,7,8,9,10,22,23],
+			["Daily S&D:*8*9*10*;S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*;BSH:*5*6*;Penny PO:*17*18*",5,6,7,8,9,10,17,18,22,23],
 		Saturday_and_Sunday:              
 			["S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,22,23],
 		MEday5:
