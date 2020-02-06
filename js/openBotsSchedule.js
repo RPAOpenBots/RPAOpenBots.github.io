@@ -73,8 +73,10 @@ self.botSched = function botSched(){
 
 	//CBIGDC_PBOTZ960
 	self.CBIGDCxPBOTZ960 = {
-		daily:              
-			["Legal - NDA",8,9,10,11,12,13,14,15,16]
+		daily:
+			["Patrol Bot",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["Patrol Bot",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 
 	//CBIGDCxPBOTZ961
@@ -95,10 +97,18 @@ self.botSched = function botSched(){
 	
 	//CBIGDCxPBOTZ963
 	self.CBIGDCxPBOTZ963 = {
+		daily:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBIGDCxPBOTZ964
 	self.CBIGDCxPBOTZ964 = {
+		daily:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
     //CBITDC_PBOTZ901
