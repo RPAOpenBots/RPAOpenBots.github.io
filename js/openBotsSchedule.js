@@ -68,7 +68,7 @@ self.botSched = function botSched(){
 		MEday3:
 			["S4 - VAT",14,15,16,17],
 		daily:
-			["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*",7,9,10,11,13]
+			["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*;Penny PO:*8*",7,8,9,10,11,13]
 	}
 
 	//CBIGDC_PBOTZ960
@@ -193,6 +193,10 @@ self.botSched = function botSched(){
 	
 	//CBITDCxPBOTZ964
 	self.CBITDCxPBOTZ964 = {
+		daily:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		Saturday_and_Sunday:
+			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 
 	// LIST OF BOTS - ADD HERE TO ADD A NEW BOT
