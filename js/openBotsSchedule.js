@@ -118,7 +118,7 @@ self.botSched = function botSched(){
         MEday1:
 			["IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,22,23],
 		daily:              
-			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*",1,7,12,16,21]
+			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*;Legal Files Query:*8*",1,7,8,12,16,21]
     }
 
     //CBITDC_PBOTZ902
