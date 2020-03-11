@@ -203,25 +203,25 @@ self.botSched = function botSched(){
 	self.BOTS = {
 		INFO: [
 			//GDC
-			{name:"CBIGDC_PBOTZ901", sched: self.CBIGDCxPBOTZ901, color: "#E0DA83"},
-			{name:"CBIGDC_PBOTZ902", sched: self.CBIGDCxPBOTZ902, color: "#fb9696"},
-			{name:"CBIGDC_PBOTZ903", sched: self.CBIGDCxPBOTZ903, color: "#79b8e5"},
-			{name:"CBIGDC_PBOTZ904", sched: self.CBIGDCxPBOTZ904, color: "#eda84f"},
-			{name:"CBIGDC_PBOTZ960", sched: self.CBIGDCxPBOTZ960, color: "#04d491"},
-			{name:"CBIGDC_PBOTZ961", sched: self.CBIGDCxPBOTZ961, color: "#f15454"},
-			{name:"CBIGDC_PBOTZ962", sched: self.CBIGDCxPBOTZ962, color: "#a796b0"},
-			{name:"CBIGDC_PBOTZ963", sched: self.CBIGDCxPBOTZ963, color: "#1BB641"},
-			{name:"CBIGDC_PBOTZ964", sched: self.CBIGDCxPBOTZ964, color: "#5781E8"},
+			{name:"CBIGDC_PBOTZ901", sched: self.CBIGDCxPBOTZ901, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ902", sched: self.CBIGDCxPBOTZ902, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ903", sched: self.CBIGDCxPBOTZ903, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ904", sched: self.CBIGDCxPBOTZ904, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ960", sched: self.CBIGDCxPBOTZ960, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ961", sched: self.CBIGDCxPBOTZ961, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ962", sched: self.CBIGDCxPBOTZ962, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ963", sched: self.CBIGDCxPBOTZ963, color: "#5bbce3"},
+			{name:"CBIGDC_PBOTZ964", sched: self.CBIGDCxPBOTZ964, color: "#5bbce3"},
 			//TDC
-			{name:"CBITDC_PBOTZ901", sched: self.CBITDCxPBOTZ901, color: "#8fc568"},
-			{name:"CBITDC_PBOTZ902", sched: self.CBITDCxPBOTZ902, color: "#6e7275"},
-			{name:"CBITDC_PBOTZ903", sched: self.CBITDCxPBOTZ903, color: "#b8c0c5"},
-			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#2eaba7"},
-			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#af95e2"},
-			{name:"CBITDC_PBOTZ961", sched: self.CBITDCxPBOTZ961, color: "#95b1f1"},
-			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#afbaad"},
-			{name:"CBITDC_PBOTZ963", sched: self.CBITDCxPBOTZ963, color: "#E9C47F"},
-			{name:"CBITDC_PBOTZ964", sched: self.CBITDCxPBOTZ964, color: "#CB57E8"}
+			{name:"CBITDC_PBOTZ901", sched: self.CBITDCxPBOTZ901, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ902", sched: self.CBITDCxPBOTZ902, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ903", sched: self.CBITDCxPBOTZ903, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ904", sched: self.CBITDCxPBOTZ904, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ960", sched: self.CBITDCxPBOTZ960, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ961", sched: self.CBITDCxPBOTZ961, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ962", sched: self.CBITDCxPBOTZ962, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ963", sched: self.CBITDCxPBOTZ963, color: "#5bbce3"},
+			{name:"CBITDC_PBOTZ964", sched: self.CBITDCxPBOTZ964, color: "#5bbce3"}
 		]
 	}
 }

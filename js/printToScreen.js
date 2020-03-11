@@ -8,8 +8,8 @@ function printToScreen(bot, name, bot_reference){
     convertDayToBusinessDay(today);
     if(isBusinessDay(date)){ convertDayToMonthEndDay(date); }
     else{ self.monthEndDay="" }
-    
     var available = "Nothing Currently Scheduled";
+    document.getElementById(name+"_title").style.backgroundColor = "rgba(87, 230, 87, 0.80)";
     document.getElementById(name+"_dupe").innerHTML = " ";
     self.allTimes = [];
     self.reservations = [];
@@ -121,13 +121,22 @@ function printToScreen(bot, name, bot_reference){
                 if(value!=0){ // first value is the process name
                     if(bot[property][value]===hour){
                         available = currentProcess;
+                        document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                     }
                     if(!outputs.includes(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'))){
                         outputs.push(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'));
                     } else {
-                        document.getElementById(name+"_dupe").innerHTML = 
-                        document.getElementById(name+"_dupe").innerHTML +
-                        "Possible Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A') + "</br>";
+                        if(document.getElementById(name+"_dupe").innerHTML.includes("Possible Schedule Overlap")){
+                            document.getElementById(name+"_dupe").innerHTML = 
+                            document.getElementById(name+"_dupe").innerHTML +
+                            ", " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
+                            document.getElementById(name+"_title").style.backgroundColor = "#ede661";
+                        } else{
+                            document.getElementById(name+"_dupe").innerHTML = 
+                            document.getElementById(name+"_dupe").innerHTML +
+                            "Possible Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
+                            document.getElementById(name+"_title").style.backgroundColor = "#ede661";
+                        }
                     }
                     bot[property][value] = moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A');
                 } else {
@@ -140,6 +149,7 @@ function printToScreen(bot, name, bot_reference){
                             if(splitProcesses[value].includes("*"+hour+"*") && !hideAvailable){
                                 currentProcess = splitProcesses[value].split(":");
                                 currentProcess = "<span style='color:red'>Scheduled: " + currentProcess[0] + "</span>";
+                                document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                             }
                         }
                     } else {
@@ -224,6 +234,7 @@ function printToScreen(bot, name, bot_reference){
     if(self.hideAvailable){
         document.getElementById(name+"_available").innerHTML = " ";
         document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_available' style='color:darkgrey'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
+        document.getElementById(name+"_title").style.backgroundColor = "lightgrey";
     }
 
     function checkException(property) {
