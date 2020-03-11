@@ -149,7 +149,8 @@ li a:hover {
 }
 .bot_dupe{
     font-weight: bold; 
-    color: rgb(163, 160, 0); 
+    color:red;
+    font-style: italic;
     margin: 0 !important;
     text-align: center;
     font-family: monospace;
@@ -159,6 +160,10 @@ li a:hover {
     border-width: 0px 1px 0px 1px;
     line-height: normal;
     padding-top: 3px;
+}
+.scheduled{
+    color: black;
+    text-shadow: 1px 0 0 yellow, 0 -1px 0 yellow, 0 1px 0 yellow, -1px 0 0 yellow;
 }
 .btn-link {
     width:100%;

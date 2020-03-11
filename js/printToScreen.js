@@ -121,21 +121,21 @@ function printToScreen(bot, name, bot_reference){
                 if(value!=0){ // first value is the process name
                     if(bot[property][value]===hour){
                         available = currentProcess;
-                        document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
+                        document.getElementById(name+"_title").style.backgroundColor = "#ede661";
                     }
                     if(!outputs.includes(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'))){
                         outputs.push(moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A'));
                     } else {
-                        if(document.getElementById(name+"_dupe").innerHTML.includes("Possible Schedule Overlap")){
+                        if(document.getElementById(name+"_dupe").innerHTML.includes("Schedule Overlap")){
                             document.getElementById(name+"_dupe").innerHTML = 
                             document.getElementById(name+"_dupe").innerHTML +
                             ", " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
-                            document.getElementById(name+"_title").style.backgroundColor = "#ede661";
+                            document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                         } else{
                             document.getElementById(name+"_dupe").innerHTML = 
                             document.getElementById(name+"_dupe").innerHTML +
-                            "Possible Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
-                            document.getElementById(name+"_title").style.backgroundColor = "#ede661";
+                            "Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
+                            document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                         }
                     }
                     bot[property][value] = moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A');
@@ -148,12 +148,12 @@ function printToScreen(bot, name, bot_reference){
                         for(value in splitProcesses){
                             if(splitProcesses[value].includes("*"+hour+"*") && !hideAvailable){
                                 currentProcess = splitProcesses[value].split(":");
-                                currentProcess = "<span style='color:red'>Scheduled: " + currentProcess[0] + "</span>";
-                                document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
+                                currentProcess = "<span class='scheduled'>Scheduled: " + currentProcess[0] + "</span>";
+                                document.getElementById(name+"_title").style.backgroundColor = "#ede661";
                             }
                         }
                     } else {
-                        currentProcess = "<span style='color:red'>Scheduled: " + bot[property][value]+"</span>";
+                        currentProcess = "<span class='scheduled'>Scheduled: " + bot[property][value]+"</span>";
                     }
                 }
             }
@@ -207,7 +207,7 @@ function printToScreen(bot, name, bot_reference){
     for (var i=0; i<outputs.length; i++) {
         var color = "0px 0px 0px black; font-family: Times New Roman";
         if(outputs[i] === moment(hour + ":00:00", 'HH:mm').format('h:mm A') && !hideAvailable){
-            color = "0px 2px 5px red; font-family:monospace";
+            color = "1px 0 0 yellow, 0 -1px 0 yellow, 0 1px 0 yellow, -1px 0 0 yellow; font-family:monospace";
         }
         if(bot.reserved !== undefined){
             if(bot.reserved.includes(outputs[i])){
