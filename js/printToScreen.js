@@ -130,12 +130,10 @@ function printToScreen(bot, name, bot_reference){
                             document.getElementById(name+"_dupe").innerHTML = 
                             document.getElementById(name+"_dupe").innerHTML +
                             ", " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
-                            document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                         } else{
                             document.getElementById(name+"_dupe").innerHTML = 
                             document.getElementById(name+"_dupe").innerHTML +
                             "Schedule Overlap at: " + moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mmA');
-                            document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
                         }
                     }
                     bot[property][value] = moment(bot[property][value] + ":00:00", 'HH:mm').format('h:mm A');
@@ -208,6 +206,9 @@ function printToScreen(bot, name, bot_reference){
         var color = "0px 0px 0px black; font-family: Times New Roman";
         if(outputs[i] === moment(hour + ":00:00", 'HH:mm').format('h:mm A') && !hideAvailable){
             color = "1px 0 0 yellow, 0 -1px 0 yellow, 0 1px 0 yellow, -1px 0 0 yellow; font-family:monospace";
+            if(document.getElementById(name+"_dupe").innerHTML.includes(moment(outputs[i],'HH:mm').format('h:mmA'))){
+                document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
+            }
         }
         if(bot.reserved !== undefined){
             if(bot.reserved.includes(outputs[i])){
