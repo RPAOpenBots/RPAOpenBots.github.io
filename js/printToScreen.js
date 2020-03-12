@@ -201,24 +201,40 @@ function printToScreen(bot, name, bot_reference){
     });
 
     //set elements for schedules 
+    let remove = false;
+    let countRemove = 0;
+    let newArray = [];
     document.getElementById(name+"_title").innerHTML = "<center><strong>"+name+":</strong></center> <br>"
     for (var i=0; i<outputs.length; i++) {
-        var color = "0px 0px 0px black; font-family: Times New Roman";
-        if(outputs[i] === moment(hour + ":00:00", 'HH:mm').format('h:mm A') && !hideAvailable){
-            color = "1px 0 0 yellow, 0 -1px 0 yellow, 0 1px 0 yellow, -1px 0 0 yellow; font-family:monospace";
-            if(document.getElementById(name+"_dupe").innerHTML.includes(moment(outputs[i],'HH:mm').format('h:mmA'))){
-                document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
-            }
-        }
-        if(bot.reserved !== undefined){
-            if(bot.reserved.includes(outputs[i])){
-                color = "0px 2px 5px goldenrod; font-family:monospace";
-            }
-        }
-        if(i<9){
-            document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + outputs[i] + "</center><br>";
+        color = "0px 0px 0px black;color:white;font-family: Times New Roman;font-style: normal;";
+        if(Number(moment(outputs[i],"h:mm A").format("H")) < hour && !hideAvailable){
+            remove = true;
+           
         } else {
-            document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + "<span class='hide_time_"+name+"'>" + outputs[i] + "</span>" + "</center><br class='hide_time_"+name+"'>";
+            remove = false;
+            var color = "0px 0px 0px black;font-family: Times New Roman;font-style: normal;";
+        }
+        
+        if(!remove){
+            countRemove++;
+            if(outputs[i] === moment(hour + ":00:00", 'HH:mm').format('h:mm A') && !hideAvailable){
+                color = "0px 0px 0px black;color:yellow; font-family:monospace;font-style: normal;";
+                if(document.getElementById(name+"_dupe").innerHTML.includes(" "+moment(outputs[i],'HH:mm').format('h:mmA'))){
+                    document.getElementById(name+"_title").style.backgroundColor = "rgba(224, 85, 85, 0.8)";
+                    color = "0px 0px 0px black;color:red; font-family:monospace;font-style: normal;";
+                }
+            } 
+            if(bot.reserved !== undefined){
+                if(bot.reserved.includes(outputs[i])){
+                    color = "0px 0px 0px black; color:lightblue; font-style: italic;font-family: Times New Roman";
+                }
+            }
+            
+            if(countRemove<9){
+                document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + outputs[i] + "</center><br>";
+            } else {
+                document.getElementById(name+"_body").innerHTML = "<center style='text-shadow:" +color+"'>" + document.getElementById(name+"_body").innerHTML + "<span class='hide_time_"+name+"'>" + outputs[i] + "</span>" + "</center><br class='hide_time_"+name+"'>";
+            }
         }
     }
     let className = document.getElementsByClassName("hide_time_"+name+"");
@@ -234,8 +250,13 @@ function printToScreen(bot, name, bot_reference){
     document.getElementById(name+"_available").innerHTML = available;
     if(self.hideAvailable){
         document.getElementById(name+"_available").innerHTML = " ";
-        document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_available' style='color:darkgrey'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
-        document.getElementById(name+"_title").style.backgroundColor = "lightgrey";
+        document.getElementById(name+"_resourceUnit").innerHTML = "<div class='bot_available' style='color:lightblue'>Searching For: " + (self.date.getMonth()+1) + "-" + self.date.getDate() + "-" + self.date.getFullYear() + "</div>";
+        document.getElementById(name+"_title").style.backgroundColor = "lightblue";
+    }
+
+    if(document.getElementById(name+"_body").innerHTML === ""){
+        document.getElementById(name+"_available").innerHTML = "Schedule Complete"
+        document.getElementById(name+"_body").innerHTML = "<span style='font-family:monospace;font-size:large;vertical-align: super;'>-</span>"
     }
 
     function checkException(property) {
