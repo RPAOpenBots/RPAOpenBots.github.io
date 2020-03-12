@@ -236,9 +236,9 @@
     //IFRAME Call on Port
     function bot_status_iframe_login(src) {
         if(src != 'FALSE'){
-            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="Processes ran/running since last logout:"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='color:white;'>Processes ran/running since last logout:</span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML ="";
         } else {
-            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='letter-spacing:0'>Should read: 'AUTOMATE RESOURCE PC / LISTENER *'<br>If blank enable mixed content!<hr></span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
+            document.getElementById('utilization_bar').style.display = "none";document.getElementById('reserve_time_wrapper').style.display = "none";document.getElementById('schedule').innerHTML ="<span style='color:white;letter-spacing:0'>Should read: 'AUTOMATE RESOURCE PC / LISTENER *'<br>If blank enable mixed content!<hr></span>"; document.getElementById('modal').style.display = "block"; document.getElementById('bot_utilized_percent').innerHTML =""; 
         }
         self.src = src;
         self.uname = localStorage.getItem('cwc_iframe_bp_uname');
@@ -257,7 +257,7 @@
             "<li>In the pop-up window that appears, click the down arrow next to 'Options', and select Disable protection for now.</li>" + 
             "<li>The page will refresh and display any mixed content. The shield icon will be replaced with a warning symbol to indicate that the page is displaying both secure and non-secure items.</li></ol>" + 
             "</div>" +
-            "<br><hr><strong>Login:</strong><form name='loginform' onsubmit='return false' class='form-group'><input name='uname' placeholder='username' type='text'><br><input name='pword' placeholder='password' type='password' style='margin-top:2px;'><br><button style='margin-top:2px;'class='btn-primary btn btn-sm' onclick='bot_status_iframe()' type='submit'>Get Status!</button></form>" 
+            "<br><hr><strong>Login:</strong><form style='color:black;' name='loginform' onsubmit='return false' class='form-group'><input name='uname' placeholder='username' type='text'><br><input name='pword' placeholder='password' type='password' style='margin-top:2px;'><br><button style='margin-top:2px;'class='btn-primary btn btn-sm' onclick='bot_status_iframe()' type='submit'>Get Status!</button></form>" 
         } else {
             bot_status_iframe();
         }
@@ -289,11 +289,11 @@
         if(self.src != 'FALSE'){
             self.src = self.src.replace("username",self.uname)
             self.src = self.src.replace("pwd",self.pword)
-            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe src='"+src+"' style='height:400px'></iframe>"; 
+            document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe src='"+src+"' style='background-color:white;height:400px'></iframe>"; 
         } else {
             document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr>"; 
             BOTS.INFO.forEach(element => {   
-                document.getElementById('bot_picture').innerHTML += ""+element.name+":<iframe src='http://"+(element.name).replace("_","-")+".cbi.net:8181/version'></iframe>";
+                document.getElementById('bot_picture').innerHTML += "<span style='color:white;'>"+element.name+":</span><iframe style='background-color:white' src='http://"+(element.name).replace("_","-")+".cbi.net:8181/version'></iframe>";
             });
         }
     }

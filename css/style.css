@@ -253,6 +253,10 @@ iframe {
     font-weight: bold;
 }
 
+#bot_picture {
+    color:white;
+}
+
 .close:hover,
 .close:focus {
     color: #000;
