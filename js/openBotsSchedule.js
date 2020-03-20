@@ -140,7 +140,7 @@ self.botSched = function botSched(){
 		Saturday:           
 			["Approved Price Block",6,7],
         daily:              
-			["Job Cost Setup",22,23],
+			["VF - Freight Batch:*10*;Job Cost Setup:*22*23*",10,22,23],
         
     }
 	
