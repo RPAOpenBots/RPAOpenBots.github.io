@@ -114,7 +114,7 @@ self.botSched = function botSched(){
     //CBITDC_PBOTZ901
     self.CBITDCxPBOTZ901 = {
         Tuesday:
-			["Data Term Rec",2,3,4,5,6,9],
+			["Data Term Rec",9],
         MEday1:
 			["IC Product Rec:*10*11*12*13*22*23*",10,11,12,13,22,23],
 		daily:              
@@ -162,6 +162,8 @@ self.botSched = function botSched(){
 	self.CBITDCxPBOTZ960 = {
 		Monday:             
 			["SnM Program Balances",8,9],
+		Tuesday:
+			["Data Term Rec",1,2,3,4,5,6,7,8],
 		Saturday_and_Sunday:				
 			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21],
 		daily:				
