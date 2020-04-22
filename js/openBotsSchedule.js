@@ -143,7 +143,8 @@ self.botSched = function botSched(){
 			["Approved Price Block",6,7],
         daily:              
 			["VF - Freight Batch:*10*;Job Cost Setup:*22*23*",10,22,23],
-        
+		MEdayN10_to_MEdayN1:
+			["Cap of Projects",2,3,4]
     }
 	
 	//CBITDC_PBOTZ904
