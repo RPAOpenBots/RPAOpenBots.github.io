@@ -42,7 +42,7 @@ self.botSched = function botSched(){
         day2:
 			["Tax Compliance",3,4,5,6,7,8,9,10,11],
 		daily:
-			["S4 to JDA Int*0*;JDA In-Transit*23*",0,23],
+			["S4 to JDA Int:*0*;JDA In-Transit:*23*",0,23],
 		Saturday:
 			["S4 to JDA Int",0]
     }
