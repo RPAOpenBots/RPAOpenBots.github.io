@@ -169,6 +169,8 @@ self.botSched = function botSched(){
 			["Data Term Rec",1,2,3,4,5,6,7,8],
 		Wednesday:
 			["HR - PTO Delegations",14],
+		MEdayN1:
+			["IT - Cell Data",11,12,13],
 		/* Saturday_and_Sunday:				
 			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21],
 		daily:				
