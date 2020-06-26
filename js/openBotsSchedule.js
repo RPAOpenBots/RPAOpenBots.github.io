@@ -66,11 +66,11 @@ self.botSched = function botSched(){
 		FIRST_Wednesday:
 			["IT - AD Reconciliation",12],
         MEday1:
-			["IC Non-Prod Rec",2,3,4,5,6,18,19,20,21,22],
+			["IC Non-Prod Rec",2,3,4,5,18,19,20,21,22],
 		MEday3:
 			["S4 - VAT",14,15,16,17],
 		daily:
-			["OMR:*7*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*;Penny PO:*8*",7,8,9,10,11,13]
+			["OMR:*6*13*;Weather Forcast:*9*;Telecom Invoices:*10*11*;Penny PO:*8*",6,8,9,10,11,13]
 	}
 
 	//CBIGDC_PBOTZ960
