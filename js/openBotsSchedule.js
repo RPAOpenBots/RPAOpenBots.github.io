@@ -44,7 +44,11 @@ self.botSched = function botSched(){
 		daily:
 			["S4 to JDA Int:*0*;JDA In-Transit:*23*",0,23],
 		Saturday:
-			["S4 to JDA Int",0]
+			["S4 to JDA Int",0],
+		MEday3_to_MEday5:
+			["HFM",8,17],
+		MEday6:
+			["HFM",8],
     }
 
     //CBIGDC_PBOTZ903
@@ -53,10 +57,6 @@ self.botSched = function botSched(){
 			["AP Payment",6,9,10,11],
         Tuesday_and_Thursday_and_Friday:
 			["AP Payment",9],
-        MEday3_to_MEday5:
-			["HFM",8,17],
-		MEday6:
-			["HFM",8],
 		daily:
 			["AP Morning Balances",5,6]
     }
