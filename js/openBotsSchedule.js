@@ -203,7 +203,7 @@ self.botSched = function botSched(){
 	//CBITDCxPBOTZ964
 	self.CBITDCxPBOTZ964 = {
 		daily:
-			["D&A - Dist Portal",10,11],
+			["D&A - Dist Portal",9,10,11],
 	}
 
 	// LIST OF BOTS - ADD HERE TO ADD A NEW BOT
