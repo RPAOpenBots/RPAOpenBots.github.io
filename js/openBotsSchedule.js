@@ -120,13 +120,13 @@ self.botSched = function botSched(){
         MEday1:
 			["IC Product Rec",10,11,12,13,22,23],
 		daily:              
-			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*;Legal Files Query:*8*;Legal FET:*17*18*19*20*",1,7,8,12,16,17,18,19,20,21]
+			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*;Legal Files Query:*8*",1,7,8,12,16,21]
     }
 
     //CBITDC_PBOTZ902
     self.CBITDCxPBOTZ902 = {
         daily:              
-			["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*",5,8,9,11,12,13,14,15,16,17],
+			["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*;Legal FET:*0*1*22*23*24*",5,8,9,11,12,13,14,15,16,17,22,23,24,0,1],
 		MEdayN2_to_MEday5:  
 			["FPA - Plan Forecast",6,7],
     }
