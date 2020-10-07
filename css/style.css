@@ -440,6 +440,7 @@ iframe {
     padding-top:25px;
     font-style: italic;
     font-weight: normal;
+    color:white;
   }
   .time_slot_container{
       display:inline;
