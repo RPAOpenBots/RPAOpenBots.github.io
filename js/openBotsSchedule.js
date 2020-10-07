@@ -133,8 +133,8 @@ self.botSched = function botSched(){
 
     //CBITDC_PBOTZ903
     self.CBITDCxPBOTZ903 = {
-        SECOND_Friday_and_FOURTH_Friday:      
-			["IT-Proj Cost Calc",12,13],
+        Monday_and_Wednesday:  
+			["FC - WorkFlowGen",12,13],
 		Monday: 
 			["Approved Price Block",9,11,14,16,18],
 		Tuesday_and_Wednesday_and_Thursday_and_Friday:
