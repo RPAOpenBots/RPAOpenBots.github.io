@@ -75,41 +75,31 @@ self.botSched = function botSched(){
 
 	//CBIGDC_PBOTZ960
 	self.CBIGDCxPBOTZ960 = {
-		daily:
-			["Patrol Bot",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["Patrol Bot",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 
 	//CBIGDCxPBOTZ961
 	self.CBIGDCxPBOTZ961 = {
-		daily:
-			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBIGDCxPBOTZ962
 	self.CBIGDCxPBOTZ962 = {
-		daily:
-			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBIGDCxPBOTZ963
 	self.CBIGDCxPBOTZ963 = {
-		daily:
-			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBIGDCxPBOTZ964
 	self.CBIGDCxPBOTZ964 = {
-		daily:
-			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
@@ -126,9 +116,11 @@ self.botSched = function botSched(){
     //CBITDC_PBOTZ902
     self.CBITDCxPBOTZ902 = {
         daily:              
-			["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*;Legal FET:*0*1*22*23*24*",5,8,9,11,12,13,14,15,16,17,22,23,24,0,1],
+			["Ariba Contact Updates:*15*16*17*;Employee Master Updates:*11*12*13*;New Hire Notification:*14*;Weekly/Monthly S&D:*8*9*;Ops Fin Dep Exp:*5*",5,8,9,11,12,13,14,15,16,17],
 		MEdayN2_to_MEday5:  
 			["FPA - Plan Forecast",6,7],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
+			["Legal FET",0,1,22,23]
     }
 
     //CBITDC_PBOTZ903
@@ -154,8 +146,8 @@ self.botSched = function botSched(){
 		Monday_and_Wednesday:				
 			["Telecom Ariba Upload",14,15],
 		daily:              
-			["Daily S&D:*8*9*10*;S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*;BSH:*5*6*",5,6,7,8,9,10,22,23],
-		Saturday_and_Sunday:              
+			["Daily S&D:*8*9*10*;BSH:*5*6*",5,6,8,9,10],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:              
 			["S4 - Glass Pro Forma:*7*22*;S4 - Lot Clearing:*23*",7,22,23],
 		MEday5:
 			["FPA - TE Report",11,12,13,14,15,16]
@@ -170,20 +162,15 @@ self.botSched = function botSched(){
 		Wednesday:
 			["HR - PTO Delegations",14],
 		MEdayN1:
-			["IT - Cell Data",10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
-		/* Saturday_and_Sunday:				
-			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21],
-		daily:				
-			["Tax - VIM Part 1:*10*11*14*15*18*19*;Tax - VIM Part 2:*12*13*16*17*20*21*",10,11,12,13,14,15,16,17,18,19,20,21] */
+			["IT - Cell Data",10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
 	}
 
 	//CBITDCxPBOTZ961
 	self.CBITDCxPBOTZ961 = {
-		daily:
-			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["TMS - Beer Loads",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
+	
 	//CBITDCxPBOTZ962
 	self.CBITDCxPBOTZ962 = {
 	}

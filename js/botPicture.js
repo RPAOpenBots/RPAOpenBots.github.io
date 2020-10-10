@@ -64,6 +64,7 @@ self.botPicture = function botPicture(sched){
 			new_property = new_property.split("THIRD").join("3rd");
 			new_property = new_property.split("FOURTH").join("4th");
 			new_property = new_property.split("FIFTH").join("5th");
+			new_property = new_property.split("Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday").join("Daily & Weekend");
 			new_property = new_property.split("_and_").join("/");
 			new_property = new_property.split("daily").join("Daily");
 			new_property = new_property.split("EXCEPT").join(" Except ");
