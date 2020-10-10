@@ -25,9 +25,7 @@ self.botSched = function botSched(){
 
     //CBIGDC_PBOTZ901
     self.CBIGDCxPBOTZ901 = {
-        dailyEXCEPT_MEday3_MEday4_MEday5:
-			["Manual JE",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-		Saturday_and_Sunday:             						
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:						
 			["Manual JE",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     }
 

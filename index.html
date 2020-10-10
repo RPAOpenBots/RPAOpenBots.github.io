@@ -71,7 +71,7 @@
     <li id="main"><div title="More Info" class="openbtn" onclick="openNav()"> <i class="material-icons">&#xe03c;</i></div></li>
     <li class="media_small table-cell" title"Process Insights">
         <a >All times are <strong style='text-decoration: underline;'>EST</strong>: 
-        <p class="header_todays_date" id="todaysDate"></p> - v4.2</a>
+        <p class="header_todays_date" id="todaysDate"></p> - v4.5</a>
     </li>
     <li onclick="openNav_insight()" class="header_all_statuses header_change_date table-cell" >
             <a class="active header_link">Bot Insights<i class="material-icons">&#xe85c;</i></a>
@@ -87,10 +87,10 @@
 
 <!--***********************************START BOTS PRINTED SCHEDULES #HTML************************************-->
 <center>
-
-    <div><h2 class="bots_server_title">GDC BOTS:</h2></div>
+    <input type="search" class="search" id="search" name="search" placeholder="Find a Process"><input value="search" type="submit" id="searchbtn" onclick="init()">
+    <div class="media_small"><h2 class="bots_server_title">GDC BOTS:</h2></div>
     <div id="GDC_BOTS" style='min-height: 500px;'></div>
-    <div><h2 class="bots_server_title" style="margin-top:40px;">TDC BOTS:</h2></div>
+    <div class="media_small"><h2 class="bots_server_title" style="margin-top:40px;">TDC BOTS:</h2></div>
     <div id="TDC_BOTS"></div>
    
 </center>
@@ -104,7 +104,11 @@
     if(self.RESERVE_DATA === undefined){
         getReserveAPI();
     }
-
+    $(".search").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            init();
+        }
+    });
     init();
     function init(datePassedIn){
         self.botSched();
@@ -117,13 +121,34 @@
         self.gdc_count_tracker = 5;
         self.tdc_count_tracker = -5;
 
+        let searchValue = document.getElementById("search").value;
+        if(document.getElementById("search").value == ""){
+            document.getElementById("searchbtn").value = "search";
+        } else {
+            document.getElementById("searchbtn").value = "clear";
+        }
+        document.getElementById("search").value = "";
 
         // LOOP BOTS
         BOTS.INFO.forEach(element => {
             let displayMoreTimes = "displayMoreTimes('hide_time_"+element.name+"','"+element.name+"_btnExtend')";
             let bot_status_iframe_login = 'bot_status_iframe_login("http://'+element.name.replace("_","-")+'.cbi.net:8181/user%20name%20username@CWC.cbi.net&password%20pwd&status")';
+            let containsSearchValue = false;
 
-            if(element.name.includes("GDC")){
+            if(searchValue!=""){
+                for (value in element.sched) { 
+                    if (element.sched[value][0].toUpperCase().includes(searchValue.toUpperCase())) {
+                        containsSearchValue = true;
+                        break;
+                    }
+                }
+                element.containsSearchValue = containsSearchValue;
+            } else {
+                element.containsSearchValue = true;
+                containsSearchValue = true;
+            }
+
+            if(element.name.includes("GDC") && containsSearchValue){
                 gdc_count++;
                 document.getElementById("GDC_BOTS").innerHTML += 
                 "<span id="+gdc_count+"><div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
@@ -138,7 +163,7 @@
                 if(gdc_count > 5){
                     document.getElementById(gdc_count).style.display = "none";
                 }
-            } else {
+            } else if(containsSearchValue) {
                 tdc_count--;
                 document.getElementById("TDC_BOTS").innerHTML += 
                 "<span id="+tdc_count+"><div id="+element.name.replace("CBI","")+" class='hover bot_container'> \
@@ -165,7 +190,9 @@
         }
 
         for (var property in BOTS.INFO) {
-            document.getElementById(BOTS.INFO[property].name+"_body").innerHTML = "";
+            if(BOTS.INFO[property].containsSearchValue){
+                document.getElementById(BOTS.INFO[property].name+"_body").innerHTML = "";
+            }
         }
 
         //date passed in?
@@ -178,6 +205,8 @@
             self.hideAvailable = false;
             self.date = new Date();
         }
+        
+        botBodiesModal();
         //init date variables
         self.weekday = new Array(7);
         weekday[0] = "Sunday";weekday[1] = "Monday";weekday[2] = "Tuesday";weekday[3] = "Wednesday";weekday[4] = "Thursday"; weekday[5] = "Friday";weekday[6] = "Saturday";
@@ -194,7 +223,7 @@
         // Print bots to screen
         for (var property in BOTS.INFO) {
             let deepClone = JSON.parse(JSON.stringify(BOTS.INFO[property].sched));
-            printToScreen(BOTS.INFO[property].sched,BOTS.INFO[property].name,BOTS.INFO[property]);
+            printToScreen(BOTS.INFO[property].sched,BOTS.INFO[property].name,BOTS.INFO[property].containsSearchValue,BOTS.INFO[property]);
             BOTS.INFO[property].full_sched = deepClone;
         }
   

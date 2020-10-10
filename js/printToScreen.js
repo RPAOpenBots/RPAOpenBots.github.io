@@ -2,7 +2,8 @@
 *  Function()
 *  Print bots schedules to the screen
 */
-function printToScreen(bot, name, bot_reference){
+function printToScreen(bot, name, containsSearchValue, bot_reference){
+    if(!containsSearchValue){return;}
     //self.botSched();
     var isTodayBusinessDay = isBusinessDay(new Date());
     convertDayToBusinessDay(today);

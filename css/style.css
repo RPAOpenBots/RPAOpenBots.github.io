@@ -89,7 +89,9 @@ li a:hover {
     cursor: pointer;
     color: black;
 }
-
+.search {
+    margin: 2px;
+}
 /****************** BOT BOXES ******************/
 .bots_server_title {
     /* border-radius: 50px;  */
