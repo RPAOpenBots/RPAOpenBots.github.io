@@ -4,7 +4,6 @@
 <style>
 	.color_it {
 		/* CHANGE THIS COLOR FOR BOT SCHEDULE */
-		opacity: .5;
 	}
 	#bot {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -19,6 +18,7 @@
 		white-space: nowrap;
 	}
 	#bot tr:nth-child(even){background-color: #f2f2f2;}
+	#bot tr:nth-child(odd){background-color: white;}
 	#bot th {
 		background-color: #85898c;
 		color: white;
@@ -74,7 +74,7 @@
 		} else if(filter != undefined){
 			self.filter = filter.replace("&amp;","&");
 		}
-		self.sched = "<table id='bot'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
+		self.sched = "<table id='bot' cellspacing='0'><tr><th></th><th></th><th>12am</th><th>1am</th><th>2am</th><th>3am</th><th>4am</th><th>5am</th><th>6am</th><th>7am</th><th>8am</th><th>9am</th><th>10am</th><th>11am</th><th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th><th>4pm</th><th>5pm</th><th>6pm</th><th>7pm</th><th>8pm</th><th>9pm</th><th>10pm</th><th>11pm</th></tr>"
 		for (property in BOT){
 			let splitProcesses = "";
 			let doubleSplit = "";
@@ -167,9 +167,9 @@
 						}
 					} else {
 						if (i===0 || i===1 || i===2 || i===23) {
-							self.sched += "<td style='background: repeating-linear-gradient(-45deg, "+color+", "+color+" 5px, white 5px, white 10px);' class='color_it'><center>*</center></td>";
+							self.sched += "<td style='background: repeating-linear-gradient(-45deg, "+"lightgray"+", "+"lightgray"+" 5px, white 5px, white 10px);' class='color_it'><center>*</center></td>";
 						} else {
-							self.sched += "<td style='background: repeating-linear-gradient(-45deg, "+color+", "+color+" 5px, white 5px, white 10px);' class='color_it'></td>";
+							self.sched += "<td style='background: repeating-linear-gradient(-45deg, "+"lightgray"+", "+"lightgray"+" 5px, white 5px, white 10px);' class='color_it'></td>";
 						}
 					}
 					counter++;
