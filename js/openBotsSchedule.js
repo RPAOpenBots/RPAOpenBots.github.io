@@ -160,7 +160,9 @@ self.botSched = function botSched(){
 		Wednesday:
 			["HR - PTO Delegations",14],
 		MEdayN1:
-			["IT - Cell Data",10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+			["IT - Cell Data",10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+		day1_and_day5_and_day7:
+			["Tax - Foreign Trade",10,11]
 	}
 
 	//CBITDCxPBOTZ961

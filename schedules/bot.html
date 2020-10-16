@@ -277,7 +277,9 @@
 			new_property = new_property.split("MEday").join("Close Day ");
 			new_property = new_property.split("N").join("-");
 			new_property = new_property.split("_").join(" ");
+			new_property = new_property.split("/day").join("/Day ");
 			if(new_property.length <= 5){new_property = new_property.split("day").join("Day ");}
+			if(new_property.substring(0, 3) == "day"){new_property = new_property.split("day").join("Day ");}
 			return new_property;
 		}
 		function checkToSpan(property){
