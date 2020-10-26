@@ -125,12 +125,12 @@ self.botSched = function botSched(){
     self.CBITDCxPBOTZ903 = {
         Monday_and_Wednesday:  
 			["FC - WorkFlowGen",12,13],
-		Monday: 
-			["Approved Price Block",9,11,14,16,18],
 		Tuesday_and_Wednesday_and_Thursday_and_Friday:
 			["Approved Price Block",6,7,9,11,14,16,18],
 		Saturday:           
 			["Approved Price Block",6,7],
+		Monday: 
+			["Approved Price Block",9,11,14,16,18],
         daily:              
 			["VF - Freight Batch:*10*;Job Cost Setup:*22*23*",10,22,23],
 		MEdayN10_to_MEdayN1:
