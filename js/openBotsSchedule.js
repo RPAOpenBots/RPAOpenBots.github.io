@@ -55,6 +55,8 @@ self.botSched = function botSched(){
 			["AP Payment",6,9,10,11],
         Tuesday_and_Thursday_and_Friday:
 			["AP Payment",9],
+		Monday_and_Thursday:
+			["IT - OIM",8],
 		daily:
 			["AP Morning Balances",5,6]
     }
