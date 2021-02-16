@@ -112,7 +112,7 @@ self.botSched = function botSched(){
 		MEday3:
 			["Supplier Scorecard",14,15],
 		daily:              
-			["Credential Checker:*1*;Order Entry - Samples:*7*12*16*21*;Legal Files Query:*8*",1,7,8,12,16,21]
+			["Credential Checker:*1*;Legal Files Query:*8*",1,8]
     }
 
     //CBITDC_PBOTZ902
