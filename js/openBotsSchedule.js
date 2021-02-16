@@ -180,7 +180,9 @@ self.botSched = function botSched(){
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
 			["Legal - Sweeps",9,10],
 		Monday:
-			["Payroll - NHA",11]
+			["Payroll - NHA",11],
+		Tuesday:
+			["Shift Loading",8]
 	}
 
 	//CBITDCxPBOTZ963
