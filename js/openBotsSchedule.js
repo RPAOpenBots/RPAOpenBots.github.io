@@ -170,17 +170,18 @@ self.botSched = function botSched(){
 	//CBITDCxPBOTZ961
 	self.CBITDCxPBOTZ961 = {
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
-			["Patrol Bot - Listener",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+			["QA - WSP PIX",0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 	}
 	
 	//CBITDCxPBOTZ962
 	self.CBITDCxPBOTZ962 = {
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
-			["Legal - Sweeps",9,10],
+			["Legal - Sweeps:*9*10*;Warehouse Rec:*0*1*23*",9,10,0,1,23],
 		Monday:
 			["Payroll - NHA",11],
 		Tuesday:
 			["Shift Loading",8]
+			
 	}
 
 	//CBITDCxPBOTZ963
