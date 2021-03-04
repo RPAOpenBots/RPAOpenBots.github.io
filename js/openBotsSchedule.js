@@ -31,9 +31,9 @@ self.botSched = function botSched(){
     self.CBIGDCxPBOTZ902 = {
 		Tuesday:
 			["Sox Term",18],
-		daily:
-			["S4 to JDA Int:*0*;JDA In-Transit:*23*",0,23],
-		Saturday:
+		Monday_and_Tuesday_and_Wednesday_and_Thursday:
+			["JDA In-Transit",23],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday:
 			["S4 to JDA Int",0],
 		MEday3_to_MEday5:
 			["HFM",8,17],
