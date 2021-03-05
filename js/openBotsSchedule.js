@@ -98,13 +98,17 @@ self.botSched = function botSched(){
         daily:              
 			["New Hire Notification",14],
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
-			["Legal FET",0,1,22,23]
+			["Legal FET",0,1,22,23],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday:
+			["S4 - Delivery Priority Mass Update",8,9]
     }
 
     //CBITDC_PBOTZ903
     self.CBITDCxPBOTZ903 = {
         daily:              
 			["FC- WorkFlowGen",12,13],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday:
+			["S4 - Order Manage: Dupe Check",8,9]
     }
 	
 	//CBITDC_PBOTZ904
