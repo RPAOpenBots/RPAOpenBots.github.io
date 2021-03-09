@@ -40,7 +40,9 @@ self.botSched = function botSched(){
     //CBIGDC_PBOTZ903
     self.CBIGDCxPBOTZ903 = {
 		Monday_and_Friday:
-			["IT - OIM",8]
+			["IT - OIM",8],
+		Monday:
+			["Payroll - Unmatched Punch",1]
     }
 	
 	//CBIGDC_PBOTZ904
