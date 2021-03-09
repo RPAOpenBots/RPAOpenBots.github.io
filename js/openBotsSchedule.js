@@ -1,5 +1,5 @@
 /* 
- *  LAST UPDATED: 10/17/2019 
+ *  LAST UPDATED: 03/09/2021 
  *
  *  Below schedule is in military time. 
  *	-----------------------------------------------------------
@@ -42,7 +42,7 @@ self.botSched = function botSched(){
 		Monday_and_Friday:
 			["IT - OIM",8],
 		Monday:
-			["Payroll - Unmatched Punch",1]
+			["Payroll - Unmatched Punch",13]
     }
 	
 	//CBIGDC_PBOTZ904
