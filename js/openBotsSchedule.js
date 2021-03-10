@@ -108,7 +108,7 @@ self.botSched = function botSched(){
     //CBITDC_PBOTZ903
     self.CBITDCxPBOTZ903 = {
         daily:              
-			["FC- WorkFlowGen",12,13],
+			["FC- WorkFlowGen",12,13,14,15,16,17],
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday:
 			["S4 - Order Manage: Dupe Check",8,9]
     }
