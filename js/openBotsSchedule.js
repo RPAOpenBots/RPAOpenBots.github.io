@@ -28,7 +28,7 @@ self.botSched = function botSched(){
 		daily:
 			["Daily S&D",6,7,8]
     }
-
+	
     //CBIGDC_PBOTZ902
     self.CBIGDCxPBOTZ902 = {
 		Tuesday:
@@ -36,7 +36,7 @@ self.botSched = function botSched(){
 		MEday3_to_MEday5:
 			["HFM",8,17],
 		MEday6:
-			["HFM",8],
+			["HFM",8]
     }
 
     //CBIGDC_PBOTZ903
@@ -44,7 +44,9 @@ self.botSched = function botSched(){
 		Monday_and_Friday:
 			["IT - OIM",8],
 		Monday:
-			["Payroll - Unmatched Punch",13]
+			["Payroll - Unmatched Punch",13],
+		daily:
+			["Order Entry - Gallo",9,10,16,17]
     }
 	
 	//CBIGDC_PBOTZ904
