@@ -26,7 +26,7 @@ self.botSched = function botSched(){
     //CBIGDC_PBOTZ901
     self.CBIGDCxPBOTZ901 = {
 		daily:
-			["Daily S&D",6,7,8]
+			["Daily S&D",6,7,8,9]
     }
 	
     //CBIGDC_PBOTZ902
@@ -150,7 +150,7 @@ self.botSched = function botSched(){
 	//CBITDCxPBOTZ962
 	self.CBITDCxPBOTZ962 = {
 		Monday_and_Tuesday_and_Wednesday_and_Thursday_and_Friday_and_Saturday_and_Sunday:
-			["Legal - Sweeps:*9*10*;Warehouse Rec:*0*1*23*",9,10,0,1,23],
+			["Legal - Sweeps:*9*10*;Warehouse Rec:*0*1*2*3*23*",9,10,0,1,2,3,23],
 		Monday:
 			["Payroll - NHA",11],
 		Tuesday:
