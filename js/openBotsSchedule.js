@@ -36,7 +36,9 @@ self.botSched = function botSched(){
 		MEday3_to_MEday5:
 			["HFM",8,17],
 		MEday6:
-			["HFM",8]
+			["HFM",8],
+		daily:
+			["Intellapac Packaging",4,5]
     }
 
     //CBIGDC_PBOTZ903
