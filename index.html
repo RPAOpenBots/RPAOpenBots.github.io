@@ -288,6 +288,8 @@
             "</div>" +
             "<br><hr><strong>Login:</strong><form style='color:black;' name='loginform' onsubmit='return false' class='form-group'><input name='uname' placeholder='username' type='text'><br><input name='pword' placeholder='password' type='password' style='margin-top:2px;'><br><button style='margin-top:2px;'class='btn-primary btn btn-sm' onclick='bot_status_iframe()' type='submit'>Get Status!</button></form>" 
         } else {
+			self.uname=encodeURIComponent(self.uname);
+			self.pword=encodeURIComponent(self.pword);
             bot_status_iframe();
         }
         document.getElementsByClassName("close")[0].onclick = function() {
@@ -316,8 +318,8 @@
             localStorage.setItem('cwc_iframe_bp_pword',self.pword);
         }
         if(self.src != 'FALSE'){
-            self.src = self.src.replace("username",self.uname)
-            self.src = self.src.replace("pwd",self.pword)
+            self.src = self.src.replace("username",encodeURIComponent(self.uname))
+            self.src = self.src.replace("pwd",encodeURIComponent(self.pword))
             document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr><strong>Bot Stats:</strong><iframe src='"+src+"' style='background-color:white;height:400px'></iframe>"; 
         } else {
             document.getElementById('bot_picture').innerHTML = "<button style='margin-top:2px;'class='btn-default btn btn-sm' onclick='clear_login_data()'>Logout</button><hr>"; 
