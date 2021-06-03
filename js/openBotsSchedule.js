@@ -156,7 +156,9 @@ self.botSched = function botSched(){
 		Monday:
 			["Payroll - NHA",11],
 		Tuesday:
-			["Shift Loading",8]
+			["Shift Loading",8],
+		daily:
+			["Supply Demand Swaps",12,13,17,18]
 			
 	}
 
