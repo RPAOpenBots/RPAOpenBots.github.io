@@ -38,7 +38,7 @@ self.botSched = function botSched(){
 		MEday6:
 			["HFM",8],
 		daily:
-			["Intellapac Packaging",4,5]
+			["Intellapac Packaging:*4*5*;Bank of MX Cross Rates:*20*",4,5,20]
     }
 
     //CBIGDC_PBOTZ903
@@ -48,7 +48,7 @@ self.botSched = function botSched(){
 		Monday:
 			["Payroll - Unmatched Punch",13],
 		daily:
-			["Order Entry - Gallo",6,7,11,12,16,17]
+			["Order Entry - Gallo:*6*7*11*12*16*17*",6,7,11,12,16,17]
     }
 	
 	//CBIGDC_PBOTZ904
