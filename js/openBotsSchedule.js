@@ -48,7 +48,7 @@ self.botSched = function botSched(){
 		Monday:
 			["Payroll - Unmatched Punch",13],
 		daily:
-			["Order Entry - Gallo:*6*7*11*12*16*17*",6,7,11,12,16,17]
+			["Order Entry - Gallo",6,7,11,12,16,17]
     }
 	
 	//CBIGDC_PBOTZ904
