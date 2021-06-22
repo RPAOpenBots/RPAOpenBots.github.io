@@ -137,6 +137,8 @@ self.botSched = function botSched(){
 	
 	//CBITDC_PBOTZ960
 	self.CBITDCxPBOTZ960 = {
+		Monday:
+			["Data Term Rec",21,22,23],
 		Tuesday:
 			["Data Term Rec",0,1,2,3,4,5,6,7,8],
 		Wednesday:
