@@ -58,7 +58,11 @@ self.botSched = function botSched(){
 		MEday3:
 			["S4 - VAT",14,15,16,17],
 		daily:
-			["Weather Forcast:*9*;Telecom Invoices:*10*11*;Penny PO:*8*14*15*16*",8,9,10,11,14,15,16]
+			["Weather Forcast:*9*;Telecom Invoices:*10*11*",9,10,11],
+		Monday_and_Tuesday_and_Wednesday_and_Thursday:
+			["Penny PO",8,14,15,16],
+		Friday:
+			["Penny PO",8,11,12]
 	}
 
 	//CBIGDC_PBOTZ960
@@ -134,7 +138,7 @@ self.botSched = function botSched(){
 	//CBITDC_PBOTZ960
 	self.CBITDCxPBOTZ960 = {
 		Tuesday:
-			["Data Term Rec",1,2,3,4,5,6,7,8],
+			["Data Term Rec",0,1,2,3,4,5,6,7,8],
 		Wednesday:
 			["HR - PTO Delegations",14],
 		MEdayN1:
