@@ -33,10 +33,8 @@ self.botSched = function botSched(){
     self.CBIGDCxPBOTZ902 = {
 		Tuesday:
 			["Sox Term",18],
-		MEday3_to_MEday5:
+		MEday3_to_MEday8:
 			["HFM",8,17],
-		MEday6:
-			["HFM",8],
 		daily:
 			["Intellapac Packaging:*4*5*;Bank of MX Cross Rates:*20*",4,5,20]
     }
